@@ -1,0 +1,3 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","23919","Test 01 Bid Creation","chromium","Sat Nov 29 11:41:50 IST 2025","passed","Sat Nov 29 11:42:14 IST 2025","","Login.spec.ts","",""
+"","19188","Test 02 Submitting Bid","chromium","Sat Nov 29 11:42:17 IST 2025","passed","Sat Nov 29 11:42:37 IST 2025","","Login.spec.ts","",""
