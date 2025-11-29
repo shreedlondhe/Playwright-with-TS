@@ -1,0 +1,10 @@
+[PyxTech Lenovo] [INFO] [2025-11-29 12:36:21] URL: https://lenovo-qa-pyxquote.pyxtech.com/auth/login
+[PyxTech Lenovo] [INFO] [2025-11-29 12:36:21] Filling username
+[PyxTech Lenovo] [INFO] [2025-11-29 12:36:21] Filling password
+[PyxTech Lenovo] [INFO] [2025-11-29 12:36:21] Clicking on login button
+This is a method in VendorSubmission class. 6485
+[PyxTech Lenovo] [INFO] [2025-11-29 12:36:21] Clicking on Bid 6485
+[PyxTech Lenovo] [INFO] [2025-11-29 12:36:21] Clicking on Asset List section
+[PyxTech Lenovo] [INFO] [2025-11-29 12:36:21] Uploading file: C:\Users\Admin\Desktop\PyxTech_Demo\UploadForm.xlsx
+[PyxTech Lenovo] [INFO] [2025-11-29 12:36:21] Uploading file
+[PyxTech Lenovo] [INFO] [2025-11-29 12:36:21] Clicking on OK button
