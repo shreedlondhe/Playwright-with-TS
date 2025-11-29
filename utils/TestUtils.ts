@@ -2,6 +2,7 @@
 import { Page } from "playwright-core";
 import { test, expect } from "../fixtures/custom-fixtures"
 import {log} from "../utils/logger";
+import { allure } from 'allure-playwright';
 
 
 export default  class TestUtils {
@@ -32,5 +33,9 @@ log("Uploading file: "+filePath);
 await fileChooser.setFiles(filePath);
 log(logMsg);
 
+}
+
+static async getScreenshot(page:Page, logMsg: string) {
+  allure.attachment('Screenshot', await page.screenshot(), 'image/png');
 }
 }
