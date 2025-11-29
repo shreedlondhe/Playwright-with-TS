@@ -1,0 +1,10 @@
+[PyxTech Lenovo] [INFO] [2025-11-29 20:41:16] URL: https://lenovo-stage-pyxquote.pyxtech.com/
+[PyxTech Lenovo] [INFO] [2025-11-29 20:41:16] Filling username
+[PyxTech Lenovo] [INFO] [2025-11-29 20:41:16] Filling password
+[PyxTech Lenovo] [INFO] [2025-11-29 20:41:16] Clicking on login button
+[PyxTech Lenovo] [INFO] [2025-11-29 20:41:16] Clicking on Create Bid button
+[PyxTech Lenovo] [INFO] [2025-11-29 20:41:16] Clicking on Vendor dropdown
+[PyxTech Lenovo] [INFO] [2025-11-29 20:41:16] Clicking on Select All Vendors
+[PyxTech Lenovo] [INFO] [2025-11-29 20:41:16] Clicking on Select Business Unit
+[PyxTech Lenovo] [INFO] [2025-11-29 20:41:16] Clicking on Select IDG
+[PyxTech Lenovo] [INFO] [2025-11-29 20:41:16] Clicking on Submit Bid Request

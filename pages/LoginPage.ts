@@ -2,6 +2,8 @@ import { Page } from "@playwright/test";
 import TestUtils from "../utils/TestUtils";
 import {log} from "../utils/logger";
 import { credentials } from '../utils/test-data';
+import defineConfig from "../playwright.config"
+
 
 export default class LoginPage {
   constructor(private page: Page) {}
@@ -17,8 +19,10 @@ export default class LoginPage {
         
     }
     async goto() {
-        log("URL: "+credentials.baseURL);
+      
     await this.page.goto('/');
+    const currentUrl = this.page.url();
+      log("URL: "+currentUrl);
   }
 
 }

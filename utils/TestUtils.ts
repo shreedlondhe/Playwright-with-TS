@@ -12,14 +12,15 @@ export default  class TestUtils {
   static async click(page:Page,locator: string, logMsg: string): Promise<void> {
     
     await page.click(locator);
+  
 
     log(logMsg);
   }
 
   static async fill(page:Page,locator: string, value: string, logMsg: string): Promise<void> {
     
- 
-    await page.locator(locator).fill(value);
+  
+    await page.locator(locator).fill(value); 
     log(logMsg);
   }
 static async fileUpload(page:Page,locator: string, filePath: string, logMsg: string): Promise<void> {
