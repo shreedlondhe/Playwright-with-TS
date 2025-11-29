@@ -39,4 +39,13 @@ static async getScreenshot(page:Page, logMsg: string) {
   allure.attachment('Screenshot', await page.screenshot(), 'image/png');
   log(logMsg);
 }
+
+static async getFullScreenshot(page:Page, logMsg: string) {
+ allure.attachment(
+  'Screenshot',
+  await page.screenshot({ fullPage: true }),
+  'image/png'
+);
+  log(logMsg);
+}
 }
