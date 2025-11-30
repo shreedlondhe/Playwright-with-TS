@@ -15,7 +15,6 @@ export default class LoginPage {
         await TestUtils.fill(this.page, this.username, userName, 'Filling username');
         await TestUtils.fill(this.page, this.password, password, 'Filling password');
        await TestUtils.click(this.page, this.loginButton, 'Clicking on login button');
-       await this.page.waitForTimeout(5000);
         
     }
     async goto() {
