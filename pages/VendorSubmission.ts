@@ -108,7 +108,7 @@ async  updateCell() {
 
   await workbook.xlsx.writeFile(this.filePathForEdit);
 
-  console.log("Successfully updated D19 = 500");
+ // console.log("Successfully updated D19 = 500");
 }
 
 
