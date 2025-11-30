@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { expect, Page } from "@playwright/test";
 import path from 'path'
 import TestUtils from "../utils/TestUtils";
 import { allure } from 'allure-playwright';
@@ -42,5 +42,6 @@ const message = json.result.message;
 console.log("Bid ID:", bidId);
 console.log("Message:", message);
 await this.page.close();
+expect(message).toBe('bid request created successfully.');
 }
 }
