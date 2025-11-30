@@ -11,7 +11,8 @@ export default  class TestUtils {
 
   static async click(page:Page,locator: string, logMsg: string): Promise<void> {
     
-    await page.click(locator);
+    //await page.click(locator);
+     await page.locator(locator).click();
   
 
     log(logMsg);
