@@ -1,0 +1,13 @@
+[PyxTech Lenovo] [INFO] [2025-11-30 22:01:04] URL: https://lenovo-qa-pyxquote.pyxtech.com/
+[PyxTech Lenovo] [INFO] [2025-11-30 22:01:04] Filling username
+[PyxTech Lenovo] [INFO] [2025-11-30 22:01:04] Filling password
+[PyxTech Lenovo] [INFO] [2025-11-30 22:01:04] Clicking on login button
+This is a method in VendorSubmission class. 6506
+[PyxTech Lenovo] [INFO] [2025-11-30 22:01:04] Clicking on Bid 6506
+[PyxTech Lenovo] [INFO] [2025-11-30 22:01:04] Clicking on Asset List section
+Downloaded file saved at: C:\Users\Admin\Downloads\VendorDownloads/6506_Bid_Form.xlsx
+File to upload path: C:\Users\Admin\Desktop\PyxTech_Demo\UploadForm.xlsx
+Successfully updated D19 = 500
+[PyxTech Lenovo] [INFO] [2025-11-30 22:01:04] Uploading file: C:\Users\Admin\Downloads\VendorDownloads\6506_Bid_Form.xlsx
+[PyxTech Lenovo] [INFO] [2025-11-30 22:01:04] Uploading file
+[PyxTech Lenovo] [INFO] [2025-11-30 22:01:04] Clicking on OK button

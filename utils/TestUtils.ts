@@ -1,5 +1,5 @@
 //import type { Page } from "@playwright/test";
-import { Page } from "playwright-core";
+import { Locator, Page } from "playwright-core";
 import { test, expect } from "../fixtures/custom-fixtures"
 import {log} from "../utils/logger";
 import { allure } from 'allure-playwright';
@@ -12,11 +12,29 @@ export default  class TestUtils {
   static async click(page:Page,locator: string, logMsg: string): Promise<void> {
     
     //await page.click(locator);
-     await page.locator(locator).click();
-  
 
-    log(logMsg);
+   const elementLocator: Locator = await page.locator(locator);
+   await elementLocator.waitFor();
+   await elementLocator.click();
+   log(logMsg);
   }
+  static async jsClick(page: Page, locator: string, logMsg: string): Promise<void> {
+    const elementLocator = page.locator(locator);
+    await elementLocator.evaluate((node: HTMLElement) => node.click());
+    log(logMsg);
+}
+
+static async mouseClick(page:Page,locator: string, logMsg: string): Promise<void> {
+    const elementLocator: Locator = await page.locator(locator);
+    const box = await elementLocator.boundingBox(); 
+     if (!box) {
+        throw new Error(`Element not found or not visible for mouse click: ${locator}`);
+    }
+    const x = box.x + box.width / 2;
+    const y = box.y + box.height / 2;
+     await page.mouse.click(x, y);
+    log(logMsg);
+}
 
   static async fill(page:Page,locator: string, value: string, logMsg: string): Promise<void> {
     

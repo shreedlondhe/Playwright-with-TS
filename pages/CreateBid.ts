@@ -28,12 +28,8 @@ selectIDG="//div[.='IDG']/div"
     this.page.waitForResponse(res =>
         res.url().includes('/apis/bid-request/submit')
     ),
-   // this.page.click(this.submit )   
     TestUtils.click(this.page, this.submit, 'Clicking on Submit Bid Request')
 ]);
-// const screenshot = await this.page.screenshot();
-// allure.attachment('Screenshot', screenshot, 'image/png');
-//allure.attachment('Screenshot', await this.page.screenshot(), 'image/png');
 await TestUtils.getScreenshot(this.page, 'Taking screenshot after submitting bid request');
 
 const json = await apiResponse.json();
