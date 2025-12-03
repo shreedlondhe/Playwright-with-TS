@@ -1,4 +1,0 @@
-[PyxTech Lenovo] [INFO] [2025-11-29 20:45:32] URL: https://lenovo-stage-pyxquote.pyxtech.com/
-[PyxTech Lenovo] [INFO] [2025-11-29 20:45:32] Filling username
-[PyxTech Lenovo] [INFO] [2025-11-29 20:45:32] Filling password
-[PyxTech Lenovo] [INFO] [2025-11-29 20:45:32] Clicking on login button

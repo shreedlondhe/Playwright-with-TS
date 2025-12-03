@@ -1,5 +1,0 @@
-[PyxTech Lenovo] [INFO] [2025-11-30 21:43:44] URL: https://lenovo-qa-pyxquote.pyxtech.com/
-[PyxTech Lenovo] [INFO] [2025-11-30 21:43:44] Filling username
-[PyxTech Lenovo] [INFO] [2025-11-30 21:43:44] Filling password
-[PyxTech Lenovo] [INFO] [2025-11-30 21:43:44] Clicking on login button
-This is a method in VendorSubmission class. undefined

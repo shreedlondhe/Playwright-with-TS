@@ -22,7 +22,7 @@ async function updateCell() {
   }
 
 
-   sheet2.getCell("P3").value = 500;
+  sheet2.getCell("P3").value = 500;
   sheet2.getCell("P4").value = 500;
   sheet2.getCell("Q3").value = 500;
   sheet2.getCell("Q4").value = 500;
