@@ -16,10 +16,12 @@ export default class CreateBid {
   SSDLogo: Locator
   logoutButton: Locator;
   okButton: Locator;
+  chooseFilePath:string
 
   constructor(private page: Page) {
 
     this.createBidButton = page.getByText("Create New Bid Request");
+    this.chooseFilePath ="//input[@type='file' and contains(@accept,'.xlsx, .xls')]";
     this.vendorDropdown = page.locator('.dx-texteditor-input-container.dx-tag-container').first()
     this.selectAllVendors = page.getByText("Select All");
     this.selectBusinessUnit = page.getByPlaceholder("Select Business Unit");
@@ -35,8 +37,7 @@ export default class CreateBid {
 
   async createBid() {
     await TestUtils.click(this.createBidButton, 'Clicking on Create Bid button');
-    //await this.page.locator(this.chooseFile).setInputFiles(this.fileToUpload);
-    await this.page.locator(filePaths.chooseFilePath).setInputFiles(filePaths.inventoryIntake);
+    await this.page.locator(this.chooseFilePath).setInputFiles(filePaths.inventoryIntake);
     await TestUtils.click(this.vendorDropdown, 'Clicking on Vendor dropdown');
     await TestUtils.click(this.selectAllVendors, 'Clicking on Select All Vendors');
     await TestUtils.click(this.selectBusinessUnit, 'Clicking on Select Business Unit');

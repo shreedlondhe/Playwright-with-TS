@@ -7,9 +7,7 @@ import { allure } from 'allure-playwright';
 
 export default class TestUtils {
 
-
-
-  static async click(locator: Locator, logMsg: string): Promise<void> {
+static async click(locator: Locator, logMsg: string): Promise<void> {
     await locator.waitFor();
     await locator.click();
     log(logMsg);
