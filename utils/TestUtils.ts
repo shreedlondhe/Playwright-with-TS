@@ -9,19 +9,19 @@ export default class TestUtils {
 
 
 
-  static async click(page: Page, locator: Locator, logMsg: string): Promise<void> {
+  static async click(locator: Locator, logMsg: string): Promise<void> {
     await locator.waitFor();
     await locator.click();
     log(logMsg);
   }
   
-  static async jsClick(page: Page, locator: Locator, logMsg: string): Promise<void> {
+  static async jsClick(locator: Locator, logMsg: string): Promise<void> {
     await locator.evaluate((node: HTMLElement) => node.click());
     log(logMsg);
   }
 
-  static async mouseClick(page: Page, locator: string, logMsg: string): Promise<void> {
-    const elementLocator: Locator = await page.locator(locator);
+  static async mouseClick(page: Page, locator: Locator, logMsg: string): Promise<void> {
+    const elementLocator: Locator = await locator;
     const box = await elementLocator.boundingBox();
     if (!box) {
       throw new Error(`Element not found or not visible for mouse click: ${locator}`);
@@ -32,12 +32,11 @@ export default class TestUtils {
     log(logMsg);
   }
 
-  static async fill(page: Page, locator: Locator, value: string, logMsg: string): Promise<void> {
-
-
-    await locator.fill(value);
+  static async fill(locator: Locator, value: string, logMsg: string): Promise<void> {
+  await locator.fill(value);
     log(logMsg);
   }
+
   static async fileUpload(page: Page, locator: Locator, filePath: string, logMsg: string): Promise<void> {
     log("Uploading file: " + filePath);
     const [fileChooser] = await Promise.all([
@@ -63,4 +62,32 @@ export default class TestUtils {
     );
     log(logMsg);
   }
+
+
+
+static async downLoadFile(page: Page, locator: Locator, downloadPath: string): Promise<string> {
+  const [download] = await Promise.all([
+      page.waitForEvent("download"),
+      await TestUtils.click(locator, 'Clicking on Download Bid button')
+ ]);
+    const fileName = download.suggestedFilename();
+    const filePath = `${downloadPath}/${fileName}`;
+    await download.saveAs(filePath);
+    const filePathForEdit = filePath;
+    console.log(`Downloaded file saved at: ${filePath}`);
+    return  filePathForEdit;
+    
+}
+
+
+static async handleAPIResponse(page: Page, urlPart: string, statusCode: number, clickLocator: Locator, clickLogMsg: string): Promise<any> {
+  const [apiResponse] = await Promise.all([
+    page.waitForResponse(async res => 
+      res.url().includes(urlPart) && res.status() === statusCode
+    ),
+    TestUtils.click(clickLocator, clickLogMsg)
+  ]);
+
+  return [apiResponse];
+}
 }
