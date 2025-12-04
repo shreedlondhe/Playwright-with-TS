@@ -1,0 +1,9 @@
+[PyxTech Lenovo] [INFO] [2025-12-03 04:34:42] URL: https://lenovo-qa-pyxquote.pyxtech.com/
+[PyxTech Lenovo] [INFO] [2025-12-03 04:34:42] Filling username
+[PyxTech Lenovo] [INFO] [2025-12-03 04:34:42] Filling password
+[PyxTech Lenovo] [INFO] [2025-12-03 04:34:42] Clicking on login button
+[PyxTech Lenovo] [INFO] [2025-12-03 04:34:42] Clicking on Create Bid button
+[PyxTech Lenovo] [INFO] [2025-12-03 04:34:42] Clicking on Download button
+Downloaded file saved at: C:\Users\Admin\Documents\inventoryFiles\Input-template.xlsx${fileName}
+C:\Users\Admin\Documents\inventoryFiles\Input-template.xlsx${fileName}
+inside inventory form edit section

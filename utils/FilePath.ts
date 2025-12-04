@@ -10,7 +10,9 @@ export const filePaths = {
 
 
 // path for upload inventory intake form
-     inventoryIntake : path.resolve('C:\\Users\\Admin\\Desktop\\PyxTech_Demo\\Input-template.xlsx'),
+     inventoryIntake : path.resolve("C:\\Users\\Admin\\Downloads\\PyxTech\\Input-template.xlsx"),
+     inventoryIntakeEdit : path.resolve("D:\\FormToUpload"),
+
 
    
 };

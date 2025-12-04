@@ -1,0 +1,34 @@
+[PyxTech Lenovo] [INFO] [2025-12-03 23:38:57] URL: https://lenovo-qa-pyxquote.pyxtech.com/
+[PyxTech Lenovo] [INFO] [2025-12-03 23:38:57] Filling username
+[PyxTech Lenovo] [INFO] [2025-12-03 23:38:57] Filling password
+[PyxTech Lenovo] [INFO] [2025-12-03 23:38:57] Clicking on login button
+This is a method in VendorSubmission class. 6592
+[PyxTech Lenovo] [INFO] [2025-12-03 23:38:57] Clicking on Bid 6592
+[PyxTech Lenovo] [INFO] [2025-12-03 23:38:57] Clicking on Asset List section
+[PyxTech Lenovo] [INFO] [2025-12-03 23:38:57] Clicking on Download Bid button
+Downloaded file saved at: C:\Users\Admin\Downloads\VendorDownloads/6592_Bid_Form.xlsx
+Adding data in cell: D19  in sheet: Overview
+File to upload path:  C:\Users\Admin\Downloads\VendorDownloads/6592_Bid_Form.xlsx
+Added data in cell: D19  in sheet: Overview
+Excel file updated successfully.
+Adding data in cell: P3  in sheet: Product Details
+File to upload path:  C:\Users\Admin\Downloads\VendorDownloads/6592_Bid_Form.xlsx
+Added data in cell: P3  in sheet: Product Details
+Excel file updated successfully.
+Adding data in cell: P4  in sheet: Product Details
+File to upload path:  C:\Users\Admin\Downloads\VendorDownloads/6592_Bid_Form.xlsx
+Added data in cell: P4  in sheet: Product Details
+Excel file updated successfully.
+Adding data in cell: Q3  in sheet: Product Details
+File to upload path:  C:\Users\Admin\Downloads\VendorDownloads/6592_Bid_Form.xlsx
+Added data in cell: Q3  in sheet: Product Details
+Excel file updated successfully.
+Adding data in cell: Q4  in sheet: Product Details
+File to upload path:  C:\Users\Admin\Downloads\VendorDownloads/6592_Bid_Form.xlsx
+Added data in cell: Q4  in sheet: Product Details
+Excel file updated successfully.
+[PyxTech Lenovo] [INFO] [2025-12-03 23:38:57] Uploading file: C:\Users\Admin\Downloads\VendorDownloads\6592_Bid_Form.xlsx
+[PyxTech Lenovo] [INFO] [2025-12-03 23:38:57] Uploading file
+[PyxTech Lenovo] [INFO] [2025-12-03 23:38:57] Clicking on OK button
+[PyxTech Lenovo] [INFO] [2025-12-03 23:38:57] Clicking on Submit Bid
+Extracted Message After clicking On submit is :  bid created successfully.

@@ -1,0 +1,19 @@
+[PyxTech Lenovo] [INFO] [2025-12-04 10:36:40] URL: https://lenovo-qa-pyxquote.pyxtech.com/
+[PyxTech Lenovo] [INFO] [2025-12-04 10:36:40] Filling username
+[PyxTech Lenovo] [INFO] [2025-12-04 10:36:40] Filling password
+[PyxTech Lenovo] [INFO] [2025-12-04 10:36:40] Clicking on login button
+This is a method in VendorSubmission class. 6611
+[PyxTech Lenovo] [INFO] [2025-12-04 10:36:40] Clicking on Bid 6611
+[PyxTech Lenovo] [INFO] [2025-12-04 10:36:40] Clicking on Asset List section
+[PyxTech Lenovo] [INFO] [2025-12-04 10:36:40] Clicking on Download button
+Downloaded file saved at: C:\Users\Admin\Downloads\VendorDownloads/6611_Bid_Form.xlsx
+Added data  500  in cell: D19  in sheet: Overview
+Added data  65  in cell: P3  in sheet: Product Details
+Added data  65  in cell: P4  in sheet: Product Details
+Added data  566  in cell: Q3  in sheet: Product Details
+Added data  6565  in cell: Q4  in sheet: Product Details
+[PyxTech Lenovo] [INFO] [2025-12-04 10:36:40] Uploading file: C:\Users\Admin\Downloads\VendorDownloads\6611_Bid_Form.xlsx
+[PyxTech Lenovo] [INFO] [2025-12-04 10:36:40] Uploading file
+[PyxTech Lenovo] [INFO] [2025-12-04 10:36:40] Clicking on OK button
+[PyxTech Lenovo] [INFO] [2025-12-04 10:36:40] Clicking on Submit Bid
+Extracted Message After clicking On submit is :  bid created successfully.

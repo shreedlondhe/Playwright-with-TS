@@ -31,6 +31,16 @@ export default class VendorSubmission {
     await TestUtils.click(this.AssetListSection, 'Clicking on Asset List section');
     filePaths.filePathForEdit = await TestUtils.downLoadFile(this.page, this.downloadBid, filePaths.downloadPath);
     await this.updateCell();
+
+
+    // await TestUtils.excelSheetEdit(filePaths.filePathForEdit,"Overview","D19",500);
+    // await TestUtils.excelSheetEdit(filePaths.filePathForEdit,"Product Details","P3",65);
+    // await TestUtils.excelSheetEdit(filePaths.filePathForEdit,"Product Details","P4",65);
+    // await TestUtils.excelSheetEdit(filePaths.filePathForEdit,"Product Details","Q3",566);
+    // await TestUtils.excelSheetEdit(filePaths.filePathForEdit,"Product Details","Q4",6565);
+
+
+
     const uploadDownloadedBid = path.resolve(filePaths.filePathForEdit);
     await TestUtils.fileUpload(this.page, this.UploadBid, uploadDownloadedBid, 'Uploading file');
     await TestUtils.click(this.okButton, 'Clicking on OK button');
@@ -42,25 +52,31 @@ export default class VendorSubmission {
     console.log("Extracted Message After clicking On submit is : ", message);
   }
   async updateCell() {
-    const workbook = new ExcelJS.Workbook();
-    console.log("File to upload path:", filePaths.filePathForEdit);
-    await workbook.xlsx.readFile(filePaths.filePathForEdit);
-    const sheet1 = workbook.getWorksheet("Overview");
-    if (!sheet1) {
-      throw new Error("Worksheet 'Overview' not found");
-    }
-    sheet1.getCell("D19").value = 500;
+    await TestUtils.excelSheetEdit(filePaths.filePathForEdit,"Overview","D19",500);
+    await TestUtils.excelSheetEdit(filePaths.filePathForEdit,"Product Details","P3",65);
+    await TestUtils.excelSheetEdit(filePaths.filePathForEdit,"Product Details","P4",65);
+    await TestUtils.excelSheetEdit(filePaths.filePathForEdit,"Product Details","Q3",566);
+    await TestUtils.excelSheetEdit(filePaths.filePathForEdit,"Product Details","Q4",6565);
+    // const workbook = new ExcelJS.Workbook();
+    // console.log("File to upload path:", filePaths.filePathForEdit);
+    // await workbook.xlsx.readFile(filePaths.filePathForEdit);
+    // const sheet1 = workbook.getWorksheet("Overview");
+    // if (!sheet1) {
+    //   throw new Error("Worksheet 'Overview' not found");
+    // }
+    // sheet1.getCell("D19").value = 500;
 
-    const sheet2 = workbook.getWorksheet("Product Details");
+    // const sheet2 = workbook.getWorksheet("Product Details");
 
-    if (!sheet2) {
-      throw new Error("Worksheet 'Product Details' not found");
-    }
-    sheet2.getCell("P3").value = 500;
-    sheet2.getCell("P4").value = 500;
-    sheet2.getCell("Q3").value = 500;
-    sheet2.getCell("Q4").value = 500;
-    await workbook.xlsx.writeFile(filePaths.filePathForEdit);
-    console.log("Excel file updated successfully.");
+    // if (!sheet2) {
+    //   throw new Error("Worksheet 'Product Details' not found");
+    // }
+    // sheet2.getCell("P3").value = 65;
+    // sheet2.getCell("P4").value = 65;
+    // sheet2.getCell("Q3").value = 566;
+    // sheet2.getCell("Q4").value = 6565;
+    // await workbook.xlsx.writeFile(filePaths.filePathForEdit);
+    // console.log("Excel file updated successfully.");
   }
+  
 }

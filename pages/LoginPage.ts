@@ -9,11 +9,12 @@ export default class LoginPage {
   username: Locator
   password: Locator
   loginButton: Locator
-
+  
   constructor(private page: Page) {
-    this.username = page.getByRole('textbox', { name: 'Username: *' });
+  this.username = page.getByRole('textbox', { name: 'Username: *' });
     this.password = page.getByRole('textbox', { name: 'Password: *' });
-    this.loginButton = page.getByRole('button', { name: 'Login' })
+    this.loginButton = page.getByRole('button', { name: 'Login' });
+    
   }
 
   async loginToApplication(userName: string, password: string) {

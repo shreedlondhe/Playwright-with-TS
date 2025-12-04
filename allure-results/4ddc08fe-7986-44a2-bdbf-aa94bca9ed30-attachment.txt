@@ -1,0 +1,7 @@
+[PyxTech Lenovo] [INFO] [2025-12-04 09:37:12] URL: https://lenovo-qa-pyxquote.pyxtech.com/
+[PyxTech Lenovo] [INFO] [2025-12-04 09:37:12] Filling username
+[PyxTech Lenovo] [INFO] [2025-12-04 09:37:12] Filling password
+[PyxTech Lenovo] [INFO] [2025-12-04 09:37:12] Clicking on login button
+[PyxTech Lenovo] [INFO] [2025-12-04 09:37:12] Clicking on Create Bid button
+inside inventory form edit section
+Done with inventory form edit

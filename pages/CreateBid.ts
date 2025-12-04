@@ -3,6 +3,7 @@ import path from 'path'
 import TestUtils from "../utils/TestUtils";
 import { allure } from 'allure-playwright';
 import { filePaths } from "../utils/FilePath.ts";
+import {dynamicData} from "../utils/dynamicDataGenerator";
 
 export let bidId: string | undefined;
 
@@ -17,10 +18,12 @@ export default class CreateBid {
   logoutButton: Locator;
   okButton: Locator;
   chooseFilePath:string
-
+  downloadBtn:Locator
+  visibleFile:Locator
   constructor(private page: Page) {
 
     this.createBidButton = page.getByText("Create New Bid Request");
+    this.downloadBtn = page.getByRole('button', { name: 'Download Template' });
     this.chooseFilePath ="//input[@type='file' and contains(@accept,'.xlsx, .xls')]";
     this.vendorDropdown = page.locator('.dx-texteditor-input-container.dx-tag-container').first()
     this.selectAllVendors = page.getByText("Select All");
@@ -30,15 +33,20 @@ export default class CreateBid {
     this.SSDLogo = page.getByText("(SSD)");
     this.logoutButton = page.getByText("Logout");
     this.okButton = page.getByText("OK");
+    this.visibleFile=page.locator('i').nth(5)
+
   }
 
-  // fileToUpload = path.resolve('C:\\Users\\Admin\\Desktop\\PyxTech_Demo\\Input-template.xlsx');
-  // chooseFile = "//input[@type='file' and contains(@accept,'.xlsx, .xls')]"
+
 
   async createBid() {
     await TestUtils.click(this.createBidButton, 'Clicking on Create Bid button');
-    await this.page.locator(this.chooseFilePath).setInputFiles(filePaths.inventoryIntake);
-    await TestUtils.click(this.vendorDropdown, 'Clicking on Vendor dropdown');
+    //filePaths.inventoryIntakeEdit=await TestUtils.downLoadFile(this.page,this.downloadBtn,filePaths.inventoryIntake)
+   // console.log(   filePaths.inventoryIntakeEdit)
+     dynamicData.iterateAlphabets(filePaths.inventoryIntake);
+     await TestUtils.sleep(3000)
+   await this.page.locator(this.chooseFilePath).setInputFiles(filePaths.inventoryIntake);
+   await TestUtils.click(this.vendorDropdown, 'Clicking on Vendor dropdown');
     await TestUtils.click(this.selectAllVendors, 'Clicking on Select All Vendors');
     await TestUtils.click(this.selectBusinessUnit, 'Clicking on Select Business Unit');
     await TestUtils.click(this.selectIDG, 'Clicking on Select IDG');
@@ -57,4 +65,6 @@ export default class CreateBid {
     await TestUtils.getScreenshot(this.page, 'Taking screenshot after logout');
     await this.page.close
   }
+
+  
 }
