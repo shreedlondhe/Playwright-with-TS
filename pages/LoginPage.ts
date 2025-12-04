@@ -20,7 +20,7 @@ export default class LoginPage {
   async loginToApplication(userName: string, password: string) {
     await TestUtils.fill(this.username, userName, 'Filling username');
     await TestUtils.fill(this.password, password, 'Filling password');
-   // await TestUtils.click(this.loginButton, 'Clicking on login button');
+   await TestUtils.click(this.loginButton, 'Clicking on login button');
 
   }
   async goto() {
