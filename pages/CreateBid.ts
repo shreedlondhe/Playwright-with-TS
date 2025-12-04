@@ -27,8 +27,8 @@ export default class CreateBid {
     this.chooseFilePath ="//input[@type='file' and contains(@accept,'.xlsx, .xls')]";
     this.vendorDropdown = page.locator('.dx-texteditor-input-container.dx-tag-container').first()
     this.selectAllVendors = page.getByText("Select All");
-    this.selectBusinessUnit = page.getByPlaceholder("Select Business Unit");
-    this.selectIDG = page.getByText("IDG");
+    this.selectBusinessUnit = page.getByRole('combobox', { name: 'Select Business Unit' });
+    this.selectIDG = page.getByText('IDG', { exact: true });
     this.submit = page.getByText("Submit Bid Request");
     this.SSDLogo = page.getByText("(SSD)");
     this.logoutButton = page.getByText("Logout");
