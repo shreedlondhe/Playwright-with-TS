@@ -1,4 +1,7 @@
 import { test, expect } from "../fixtures/custom-fixtures"; import { credentials } from "../utils/test-data";
+import { allure } from "allure-playwright";
+import * as fs from "fs";
+
 
 
 
@@ -23,6 +26,21 @@ test('Test 02 Submitting Bid', async ({ loginPage,createBid, vendorSubmission })
 
 
 
-test.afterEach(async ({ page }) => {
+test.afterEach(async ({ page },testInfo) => {
+     try {
+    const tracePath = testInfo.outputPath("trace.zip");
+
+    if (fs.existsSync(tracePath)) {
+      const buffer = fs.readFileSync(tracePath);
+
+      await allure.attachment(
+        "Playwright Trace Zip",
+        buffer,
+        "application/zip"
+      );
+    }
+  } catch (err) {
+    console.error("Error attaching trace:", err);
+  }
    page.close();
 });
