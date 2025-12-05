@@ -6,25 +6,28 @@ import * as fs from "fs";
 
 
 
-test('Test 01 Bid Creation', async ({ loginPage, createBid, vendorSubmission }) => {
+test('Test 01 Bid Creation', async ({ loginPage, createBid, vendorSubmission ,bidStatus}) => {
    await loginPage.goto();
    await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
    await createBid.createBid();
    await createBid.logout();
    await loginPage.loginToApplication(credentials.email_vendor, credentials.password);
    await vendorSubmission.submitBid();
+   await createBid.logout();
+   await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
+   await bidStatus.confirmBid();
 
 })
 
-test('Test 02 Submitting Bid', async ({ loginPage,createBid, vendorSubmission }) => {
-   await loginPage.goto();
-   await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
-   await createBid.createBid();
-   await createBid.logout();
-   //await loginPage.goto();
-   await loginPage.loginToApplication(credentials.email_vendor, credentials.password);
-   await vendorSubmission.submitBid();
-});
+// test('Test 02 Submitting Bid', async ({ loginPage,createBid, vendorSubmission }) => {
+//    await loginPage.goto();
+//    await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
+//    await createBid.createBid();
+//    await createBid.logout();
+//    //await loginPage.goto();
+//    await loginPage.loginToApplication(credentials.email_vendor, credentials.password);
+//    await vendorSubmission.submitBid();
+// });
 
 
 

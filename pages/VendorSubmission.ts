@@ -34,6 +34,7 @@ async submitBid() {
     const responseBody = await apiResponse.json();
     const message = responseBody.message;
     log(`Extracted Message After clicking On submit is : "${message}"`);
+    await TestUtils.click(this.okButton, 'Clicking on OK button');
   }
   async updateCell() {
     await TestUtils.excelSheetEdit(filePaths.filePathForEdit, "Overview", "D19", 500);
