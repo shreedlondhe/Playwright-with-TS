@@ -12,6 +12,7 @@ import { credentials } from './utils/Test-data';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  timeout: 30000,
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: false,
