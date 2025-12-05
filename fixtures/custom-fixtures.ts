@@ -3,7 +3,7 @@ import LoginPage from '../pages/LoginPage';
 import CreateBid from '../pages/CreateBid';
 import TestUtils from '../utils/TestUtils';
 import VendorSubmission from '../pages/VendorSubmission';
-import { log } from '../utils/logger';
+import { log } from '../utils/Logger';
 
 
 

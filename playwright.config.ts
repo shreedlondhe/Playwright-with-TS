@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-import { credentials } from './utils/test-data';
+import { credentials } from './utils/Test-data';
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv

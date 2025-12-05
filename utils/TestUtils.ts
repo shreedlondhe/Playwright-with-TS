@@ -1,7 +1,7 @@
 //import type { Page } from "@playwright/test";
 import { Locator, Page } from "playwright-core";
-import { test, expect } from "../fixtures/custom-fixtures"
-import { log } from "../utils/logger";
+import { test, expect } from "../fixtures/Custom-fixtures"
+import { log } from "./Logger";
 import { allure } from 'allure-playwright';
 import { filePaths } from "./FilePath";
 import ExcelJS from "exceljs";
@@ -75,7 +75,8 @@ static async downLoadFile(page: Page, locator: Locator, downloadPath: string): P
     const filePath = `${downloadPath}/${fileName}`;
     await download.saveAs(filePath);
     const filePathForEdit = filePath;
-    console.log(`Downloaded file saved at: ${filePath}`);
+    //console.log(`Downloaded file saved at: ${filePath}`);
+    log(`Downloaded file saved at: ${filePath}`);
     return  filePathForEdit;
     
 }
@@ -109,7 +110,7 @@ static getRandomInRange(min: number, max: number): number {
       }
       sheet1.getCell(cellNo).value = value;
    await workbook.xlsx.writeFile(pathToFile);
-   console.log("Added data ",value, " in cell:", cellNo, " in sheet:", sheetName);
+  // console.log("Added data ",value, " in cell:", cellNo, " in sheet:", sheetName);
       //console.log("Excel file updated successfully.");
     }
 

@@ -1,8 +1,9 @@
-import TestUtils from "../utils/TestUtils";
-import {productTypes,manufacturers,modelNumbers,productQuantities,functionalConditionalGrades,modelYears,processorTypes,processorQuantities,memoryTypeSizes,memoryQuantities,driveTypes,driveSize,driveQuantities,gpuTypeSizes,gpuQuantity} from "../utils/dynamicDataStore";
+import TestUtils from "./TestUtils.ts";
+import {productTypes,manufacturers,modelNumbers,productQuantities,functionalConditionalGrades,modelYears,processorTypes,processorQuantities,memoryTypeSizes,memoryQuantities,driveTypes,driveSize,driveQuantities,gpuTypeSizes,gpuQuantity} from "./DynamicDataStore.ts";
 import path from 'path'
 import ExcelJS from "exceljs";
-import { filePaths } from "../utils/FilePath.ts";
+import { filePaths } from "./FilePath.ts";
+import { log } from "./Logger.ts";
 
 
 
@@ -16,7 +17,8 @@ export class dynamicData {
   ];
 
   static async iterateAlphabets(path:string) {
-console.log("inside inventory form edit section")
+    log("Started Editing Inventory file")
+
 
 const workbook = new ExcelJS.Workbook();
     await workbook.xlsx.readFile(path);
@@ -84,7 +86,8 @@ if (this.alphabets[i] === 'O') {
  }
     }
      await workbook.xlsx.writeFile(path);
-     console.log("Done with inventory form edit")
+     log("Completed Editing Inventory file")
+   
   }
   
 }
