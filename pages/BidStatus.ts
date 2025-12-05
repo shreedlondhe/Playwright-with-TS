@@ -44,11 +44,12 @@ export default class BidStatus {
         await TestUtils.click(this.techCert, "Clicking on Bids TechCert")
         await TestUtils.click(this.actionSymbol, "Clicking on Bids Action Symbol")
         await this.setMargin();
-        await TestUtils.click(this.saveAndDownload, "Clicking on the confirm")
+        await TestUtils.click(this.saveAndDownload, "Clicking on the save And Download")
         await TestUtils.click( this.confirm, "Clicking on the confirm")
         await TestUtils.click(this.save, "Clicking on this save")
         await TestUtils.click(this.ok, "Clicking on Ok")
         await TestUtils.click(this.close, "Clicking on close")
+        await TestUtils.getScreenshot(this.page, 'Taking screenshot after logout');
 }
 
     async setMargin() {
