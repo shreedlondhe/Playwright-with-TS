@@ -32,9 +32,9 @@ export default class CreateBid {
     this.selectBusinessUnit = page.getByRole('combobox', { name: 'Select Business Unit' });
     this.selectIDG = page.getByText('IDG', { exact: true });
     this.submit = page.getByText("Submit Bid Request");
-    this.SSDLogo = page.getByText("(SSD)");
+    this.SSDLogo = page.locator('.dx-button-icon');
     this.logoutButton = page.getByText("Logout");
-    this.okButton = page.getByText("OK");
+    this.okButton = page.getByRole('button', { name: 'OK' })
     this.visibleFile = page.locator('i').nth(5)
 }
     async createBid() {

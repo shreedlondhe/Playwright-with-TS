@@ -1,0 +1,5 @@
+[PyxTech Lenovo] [INFO] [2025-12-05 23:24:09] Bid Id : 
+[PyxTech Lenovo] [INFO] [2025-12-05 23:24:09] URL: https://lenovo-qa-pyxquote.pyxtech.com/
+[PyxTech Lenovo] [INFO] [2025-12-05 23:24:09] Filling username
+[PyxTech Lenovo] [INFO] [2025-12-05 23:24:09] Filling password
+[PyxTech Lenovo] [INFO] [2025-12-05 23:24:09] Clicking on login button
