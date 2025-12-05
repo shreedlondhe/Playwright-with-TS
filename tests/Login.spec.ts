@@ -1,4 +1,5 @@
-import { test, expect } from "../fixtures/Custom-fixtures"; import { credentials } from "../utils/Test-data";
+import { test, expect } from "../fixtures/Custom-fixtures"; 
+import { credentials } from "../utils/Test_Data";
 import { allure } from "allure-playwright";
 import * as fs from "fs";
 

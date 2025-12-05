@@ -1,8 +1,7 @@
 import { Page, Locator } from "@playwright/test";
 import TestUtils from "../utils/TestUtils";
 import { log } from "../utils/Logger";
-import { credentials } from '../utils/Test-data';
-import defineConfig from "../playwright.config"
+
 
 
 
