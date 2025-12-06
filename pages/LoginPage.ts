@@ -2,9 +2,6 @@ import { Page, Locator } from "@playwright/test";
 import TestUtils from "../utils/TestUtils";
 import { log } from "../utils/Logger";
 
-
-
-
 export default class LoginPage {
   username: Locator
   password: Locator

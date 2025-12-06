@@ -4,9 +4,17 @@ import { allure } from "allure-playwright";
 import * as fs from "fs";
 
 
-
-
-test('Test 01 Bid Creation', async ({ loginPage, createBid, vendorSubmission ,bidStatus}) => {
+test('Test 01 Vendor submission  flow', async ({ loginPage, createBid, vendorSubmission ,bidStatus}) => {
+   await loginPage.goto();
+   await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
+   await createBid.createBid();
+   await createBid.logout();
+   await loginPage.loginToApplication(credentials.email_vendor, credentials.password);
+   await vendorSubmission.submitBid();
+   await createBid.logout();
+  
+})
+test('Test 02 Bid confirmation  flow', async ({ loginPage, createBid, vendorSubmission ,bidStatus}) => {
    await loginPage.goto();
    await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
    await createBid.createBid();
@@ -16,18 +24,49 @@ test('Test 01 Bid Creation', async ({ loginPage, createBid, vendorSubmission ,bi
    await createBid.logout();
    await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
    await bidStatus.confirmBid();
-
+  
 })
 
-// test('Test 02 Submitting Bid', async ({ loginPage,createBid, vendorSubmission }) => {
-//    await loginPage.goto();
-//    await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
-//    await createBid.createBid();
-//    await createBid.logout();
-//    //await loginPage.goto();
-//    await loginPage.loginToApplication(credentials.email_vendor, credentials.password);
-//    await vendorSubmission.submitBid();
-// });
+test('Test 03 Bid won flow', async ({ loginPage, createBid, vendorSubmission ,bidStatus}) => {
+   await loginPage.goto();
+   await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
+   await createBid.createBid();
+   await createBid.logout();
+   await loginPage.loginToApplication(credentials.email_vendor, credentials.password);
+   await vendorSubmission.submitBid();
+   await createBid.logout();
+   await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
+   await bidStatus.confirmBid();
+   await bidStatus.wonBid()
+})
+
+test('Test 04 Bid Lost flow', async ({ loginPage, createBid, vendorSubmission ,bidStatus}) => {
+   await loginPage.goto();
+   await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
+   await createBid.createBid();
+   await createBid.logout();
+   await loginPage.loginToApplication(credentials.email_vendor, credentials.password);
+   await vendorSubmission.submitBid();
+   await createBid.logout();
+   await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
+   await bidStatus.confirmBid();
+   await bidStatus.lostBid()
+})
+test('Test 05 Bid cancel Flow', async ({ loginPage, createBid, vendorSubmission ,bidStatus}) => {
+   await loginPage.goto();
+   await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
+   await createBid.createBid();
+   await createBid.logout();
+   await loginPage.loginToApplication(credentials.email_vendor, credentials.password);
+   await vendorSubmission.submitBid();
+   await createBid.logout();
+   await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
+   await bidStatus.confirmBid();
+   await bidStatus.CancelBid();
+})
+
+
+
 
 
 

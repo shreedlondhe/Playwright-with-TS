@@ -14,14 +14,50 @@ export default class BidStatus {
     margin: Locator;
     increaseArrow: Locator;
     saveAndDownload: Locator;
-    confirm:Locator;
+    confirm: Locator;
     close: Locator;
-    save:Locator
-    ok:Locator
+    save: Locator
+    ok: Locator
+    homePage: Locator
+    threeDot: Locator
+    won: Locator
+    lost: Locator
+    lostReasonTextBox: Locator
+    //save:Locator
+    cancel: Locator
+    yes: Locator
+
+    async statusFlow() {
+        await TestUtils.click(this.homePage, "Clicking on Home Page")
+        const bidToSelect = this.page.locator(`//td[text()='${this.bidId}']/..//td//div//div/i[@class='dx-icon dx-icon-eyeopen']`);
+        await TestUtils.click(bidToSelect, "Selecting Bid")
+        await TestUtils.click(this.threeDot, "Clicking on three dot")
+    }
+
+    async wonBid() {
+        await this.statusFlow()
+        await TestUtils.click(this.won, "Selecting Won")
+        await TestUtils.click(this.ok, "Clicking on Ok")
+    }
+
+    async lostBid() {
+        await this.statusFlow()
+        await TestUtils.click(this.lost, "Selecting Lost")
+        await TestUtils.fill(this.lostReasonTextBox, 'Reason is', 'Filling text in Reason text box')
+        await TestUtils.click(this.save, "Clicking on Save")
+        await TestUtils.click(this.ok, "Clicking on Ok")
+}
+
+ async CancelBid() {
+        await this.statusFlow()
+        await TestUtils.click(this.cancel, "Selecting cancel")
+        await TestUtils.click(this.yes, "Clikcing on yes")
+        await TestUtils.click(this.ok, "Clicking on Ok")
+}
 
 
     constructor(private page: Page) {
-       
+
         this.bidsSection = page.getByText('BidsBids')
         this.techCert = page.getByRole('button', { name: 'Tech Cert' })
         this.actionSymbol = page.getByRole('button', { name: 'preferences' })
@@ -29,33 +65,45 @@ export default class BidStatus {
         this.increaseArrow = page.getByRole('spinbutton', { name: 'Lenovo PRV Margin:' })
         this.saveAndDownload = page.getByRole('button', { name: 'Save & Download' })
         this.close = page.getByRole('toolbar').filter({ hasText: 'Close' }).getByLabel('Close')
-        this.confirm=page.getByRole('button', { name: 'Confirm' })
-        this.save=page.getByRole('button', { name: 'Save' })
-        this.ok=page.getByRole('button', { name: 'OK' })
-
+        this.confirm = page.getByRole('button', { name: 'Confirm' })
+        this.save = page.getByRole('button', { name: 'Save' })
+        this.ok = page.getByRole('button', { name: 'OK' })
+        this.homePage = page.getByText('Home')
+        this.threeDot = page.getByRole('button', { name: 'overflow' })
+        this.won = page.getByRole('button', { name: 'Bid Won' })
+        this.lost = page.getByRole('button', { name: 'Bid Lost' })
+        this.lostReasonTextBox = page.getByRole('textbox', { name: 'Reason:' })
+        //this.save=page.getByRole('button', { name: 'Save' })
+        this.cancel = page.getByRole('button', { name: 'Cancel Bid Request' })
+        this.yes = page.getByRole('button', { name: 'Yes' })
     }
 
+
+
+    bidId: string = "";
+
     async confirmBid() {
-         const bidId = getBidId();
-        const bidToSelect = this.page.locator(`//td[text()='${bidId}']/..//td//div//div/i[@class='dx-icon dx-icon-eyeopen']`);
-        log(`Bid Id : ${bidId}`);
+        // const bidId = getBidId();
+        this.bidId = getBidId();
+        const bidToSelect = this.page.locator(`//td[text()='${this.bidId}']/..//td//div//div/i[@class='dx-icon dx-icon-eyeopen']`);
+        log(`Bid Id : ${this.bidId}`);
         await TestUtils.click(bidToSelect, "Selecting Bid")
         await TestUtils.click(this.bidsSection, "Clicking on Bids section")
         await TestUtils.click(this.techCert, "Clicking on Bids TechCert")
         await TestUtils.click(this.actionSymbol, "Clicking on Bids Action Symbol")
         await this.setMargin();
         await TestUtils.click(this.saveAndDownload, "Clicking on the save And Download")
-        await TestUtils.click( this.confirm, "Clicking on the confirm")
+        await TestUtils.click(this.confirm, "Clicking on the confirm")
         await TestUtils.click(this.save, "Clicking on this save")
         await TestUtils.click(this.ok, "Clicking on Ok")
         await TestUtils.click(this.close, "Clicking on close")
         await TestUtils.getScreenshot(this.page, 'Taking screenshot after logout');
-}
+    }
 
     async setMargin() {
-    await TestUtils.fill(this.increaseArrow, '50',"Setting marjin to 50%")
-    await this.page.keyboard.press('Enter');
-    await TestUtils.sleep(1000)
+        await TestUtils.fill(this.increaseArrow, '50', "Setting margin to 50%")
+        await this.page.keyboard.press('Enter');
+        await TestUtils.sleep(1000)
 
     }
 
