@@ -141,6 +141,7 @@ import { log } from "./Logger";
 import { allure } from "allure-playwright";
 import ExcelJS from "exceljs";
 import { faker } from "@faker-js/faker";
+import { expect } from "@playwright/test";
 
 export default class TestUtils {
 
@@ -277,5 +278,34 @@ export default class TestUtils {
   static async sleep(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
+  
+
+  static async expectToContainText(locator: Locator, expected: string, logMsg: string): Promise<void> {
+  await locator.waitFor({ state: "visible" });
+  const actual = await locator.innerText();
+  expect(actual?.trim()).toContain(expected);
+  log(logMsg);
+}
+
+static async expectValue(locator: Locator, expected: string, logMsg: string): Promise<void> {
+  await locator.waitFor({ state: "visible" });
+  const actual = await locator.inputValue();
+  expect(actual).toBe(expected);
+  log(logMsg);
+}
+
+static async expectAttribute(locator: Locator, attribute: string, expected: string, logMsg: string): Promise<void> {
+  await locator.waitFor({ state: "visible" });
+  const actual = await locator.getAttribute(attribute);
+  expect(actual).toBe(expected);
+  log(logMsg);
+}
+
+static async expectVisible(locator: Locator, logMsg: string): Promise<void> {
+  await locator.waitFor({ state: "visible" });
+  await expect(locator).toBeVisible();
+  log(logMsg);
+}
+
 
 }

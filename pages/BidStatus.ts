@@ -27,6 +27,12 @@ export default class BidStatus {
     cancel: Locator
     yes: Locator
 
+async getStatus(status:string){
+    await TestUtils.click(this.homePage, "Clicking on Home Page")
+    const statusLocator=await this.page.locator(`//td[normalize-space()='${this.bidId}']/following-sibling::td[4]`);
+    await TestUtils.expectToContainText(statusLocator,status,`Verifying status : ${status}`)
+}
+
     async statusFlow() {
         await TestUtils.click(this.homePage, "Clicking on Home Page")
         const bidToSelect = this.page.locator(`//td[text()='${this.bidId}']/..//td//div//div/i[@class='dx-icon dx-icon-eyeopen']`);
@@ -38,6 +44,7 @@ export default class BidStatus {
         await this.statusFlow()
         await TestUtils.click(this.won, "Selecting Won")
         await TestUtils.click(this.ok, "Clicking on Ok")
+        await this.getStatus('Won')
     }
 
     async lostBid() {
@@ -46,6 +53,7 @@ export default class BidStatus {
         await TestUtils.fill(this.lostReasonTextBox, 'Reason is', 'Filling text in Reason text box')
         await TestUtils.click(this.save, "Clicking on Save")
         await TestUtils.click(this.ok, "Clicking on Ok")
+        await this.getStatus('Lost')
 }
 
  async CancelBid() {
@@ -53,6 +61,7 @@ export default class BidStatus {
         await TestUtils.click(this.cancel, "Selecting cancel")
         await TestUtils.click(this.yes, "Clikcing on yes")
         await TestUtils.click(this.ok, "Clicking on Ok")
+        await this.getStatus('Cancelled')
 }
 
 
