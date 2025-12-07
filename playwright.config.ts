@@ -15,7 +15,7 @@ export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: false,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
+  /* Fail the build on CI if you accidentally left test.only in the source code. */ 
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
@@ -26,7 +26,8 @@ export default defineConfig({
 
    reporter: [
     ['list'],
-    ['allure-playwright']
+     ['./reporters/custom-reporter.ts']
+   // ['allure-playwright']
   ],
 
   
