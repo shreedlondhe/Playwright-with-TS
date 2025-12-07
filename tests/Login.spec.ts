@@ -1,66 +1,70 @@
 import { test, expect } from "../fixtures/Custom-fixtures"; 
-import { credentials } from "../utils/Test_Data";
 import { allure } from "allure-playwright";
 import * as fs from "fs";
+import * as dotenv from "dotenv";
+dotenv.config();
+
+
+
 
 
 test('Test 01 Vendor submission  flow', async ({ loginPage, createBid, vendorSubmission ,bidStatus}) => {
    await loginPage.goto();
-   await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
+   await loginPage.loginToApplication(process.env.email_ssd!, process.env.password!);
    await createBid.createBid();
    await createBid.logout();
-   await loginPage.loginToApplication(credentials.email_vendor, credentials.password);
+   await loginPage.loginToApplication(process.env.email_vendor!!, process.env.password!);
    await vendorSubmission.submitBid();
    await createBid.logout();
   
 })
 test('Test 02 Bid confirmation  flow', async ({ loginPage, createBid, vendorSubmission ,bidStatus}) => {
    await loginPage.goto();
-   await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
+   await loginPage.loginToApplication(process.env.email_ssd!, process.env.password!);
    await createBid.createBid();
    await createBid.logout();
-   await loginPage.loginToApplication(credentials.email_vendor, credentials.password);
+   await loginPage.loginToApplication(process.env.email_vendor!, process.env.password!);
    await vendorSubmission.submitBid();
    await createBid.logout();
-   await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
+   await loginPage.loginToApplication(process.env.email_ssd!, process.env.password!);
    await bidStatus.confirmBid();
   
 })
 
 test('Test 03 Bid won flow', async ({ loginPage, createBid, vendorSubmission ,bidStatus}) => {
    await loginPage.goto();
-   await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
+   await loginPage.loginToApplication(process.env.email_ssd!, process.env.password!);
    await createBid.createBid();
    await createBid.logout();
-   await loginPage.loginToApplication(credentials.email_vendor, credentials.password);
+   await loginPage.loginToApplication(process.env.email_vendor!, process.env.password!);
    await vendorSubmission.submitBid();
    await createBid.logout();
-   await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
+   await loginPage.loginToApplication(process.env.email_ssd!, process.env.password!);
    await bidStatus.confirmBid();
    await bidStatus.wonBid()
 })
 
 test('Test 04 Bid Lost flow', async ({ loginPage, createBid, vendorSubmission ,bidStatus}) => {
    await loginPage.goto();
-   await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
+   await loginPage.loginToApplication(process.env.email_ssd!, process.env.password!);
    await createBid.createBid();
    await createBid.logout();
-   await loginPage.loginToApplication(credentials.email_vendor, credentials.password);
+   await loginPage.loginToApplication(process.env.email_vendor!, process.env.password!);
    await vendorSubmission.submitBid();
    await createBid.logout();
-   await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
+   await loginPage.loginToApplication(process.env.email_ssd!, process.env.password!);
    await bidStatus.confirmBid();
    await bidStatus.lostBid()
 })
 test('Test 05 Bid cancel Flow', async ({ loginPage, createBid, vendorSubmission ,bidStatus}) => {
    await loginPage.goto();
-   await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
+   await loginPage.loginToApplication(process.env.email_ssd!, process.env.password!);
    await createBid.createBid();
    await createBid.logout();
-   await loginPage.loginToApplication(credentials.email_vendor, credentials.password);
+   await loginPage.loginToApplication(process.env.email_vendor!, process.env.password!);
    await vendorSubmission.submitBid();
    await createBid.logout();
-   await loginPage.loginToApplication(credentials.email_ssd, credentials.password);
+   await loginPage.loginToApplication(process.env.email_ssd!, process.env.password!);
    await bidStatus.confirmBid();
    await bidStatus.CancelBid();
 })
