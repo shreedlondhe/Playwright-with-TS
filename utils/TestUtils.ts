@@ -307,5 +307,15 @@ static async expectVisible(locator: Locator, logMsg: string): Promise<void> {
   log(logMsg);
 }
 
+static async getText(locator: Locator, logMsg: string): Promise<string> {
+  await locator.waitFor({ state: "visible" });
+  const text = (await locator.innerText())?.trim();
+  log(logMsg);
+  return text;
+}
+
+static async compareNumbers(num1: number, num2: number) {
+    expect(num1).toBe(num2);
+  }
 
 }

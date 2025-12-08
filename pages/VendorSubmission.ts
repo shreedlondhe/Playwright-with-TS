@@ -6,6 +6,7 @@ import { filePaths } from "../utils/FilePath.ts";
 import { getBidId } from "./CreateBid";
 import { log } from "../utils/Logger.ts";
 import { dynamicData } from "../utils/DynamicDataGenerator.ts";
+import calculations from "./BidExcelCalculations.ts"
 
 export default class VendorSubmission {
   AssetListSection: Locator;
@@ -43,22 +44,7 @@ async submitBid() {
     await TestUtils.click(this.okButton, 'Clicking on OK button');
    
   }
-  //  async readExcel() {
-//   const workbook = new ExcelJS.Workbook();
-//   await workbook.xlsx.readFile(filePaths.filePathForEdit);
-
-//   const sheet = workbook.getWorksheet("Product Details"); // or index
-
-//   if (!sheet) {
-//     throw new Error("Sheet 'Product Details' not found in Excel file");
-//   }
-
-//   const valueO2 = sheet.getCell("O4").value;
-
-//   console.log(" ********************************************************************************************************Value of cell O4:", valueO2);
-// }
-
-  
+    
 async fillBidData(){
 await TestUtils.excelSheetEdit(filePaths.filePathForEdit, "Overview", "D19", TestUtils.getRandomInRange(101, 999));
   for(let i=3;i<13;i++){
