@@ -43,11 +43,7 @@ async submitBid() {
     await TestUtils.click(this.okButton, 'Clicking on OK button');
    
   }
-  
-
-
-
-//  async readExcel() {
+  //  async readExcel() {
 //   const workbook = new ExcelJS.Workbook();
 //   await workbook.xlsx.readFile(filePaths.filePathForEdit);
 
