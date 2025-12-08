@@ -68,6 +68,15 @@ test('Test 05 Bid cancel Flow', async ({ loginPage, createBid, vendorSubmission 
    await bidStatus.confirmBid();
    await bidStatus.CancelBid();
 })
+test('Test 06 Bid decline Flow', async ({ loginPage, createBid,vendorBidStatus}) => {
+   await loginPage.goto();
+   await loginPage.loginToApplication(process.env.email_ssd!, process.env.password!);
+   await createBid.createBid();
+   await createBid.logout();
+   await loginPage.loginToApplication(process.env.email_vendor!, process.env.password!);
+   await vendorBidStatus.declineBid();
+ 
+})
 
 
 

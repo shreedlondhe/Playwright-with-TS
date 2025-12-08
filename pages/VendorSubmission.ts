@@ -19,11 +19,16 @@ constructor(private page: Page) {
     this.okButton = page.getByRole('button', { name: 'OK' });
     this.submitBidButton = page.getByRole('button', { name: 'Submit Bid' });
  }
-async submitBid() {
-    const bidId = getBidId();
+
+async selectBid(){
+ const bidId = getBidId();
     const bidToSelect = this.page.locator(`//div[@class='app-bid-history-grid mt-2']//td[.='${bidId}']/..//dx-button[@icon='eyeopen']`);
     log(`Bid Id : ${bidId}`);
     await TestUtils.click(bidToSelect, `Clicking on Bid ` + bidId);
+}
+
+async submitBid() {
+   await this.selectBid();
     await TestUtils.click(this.AssetListSection, 'Clicking on Asset List section');
     filePaths.filePathForEdit = await TestUtils.downLoadFile(this.page, this.downloadBid, filePaths.downloadPath);
     await this.updateCell();

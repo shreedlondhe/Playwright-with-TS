@@ -1,11 +1,11 @@
 import { expect, Page, Locator } from "@playwright/test";
 import path from 'path'
-import TestUtils from "../utils/TestUtils";
+import TestUtils from "../utils/TestUtils.ts";
 import { allure } from 'allure-playwright';
 import { filePaths } from "../utils/FilePath.ts";
 import { dynamicData } from "../utils/DynamicDataGenerator.ts";
 import { log } from "../utils/Logger.ts";
-import { getBidId } from "./CreateBid";
+import { getBidId } from "./CreateBid.ts";
 
 export default class BidStatus {
     bidsSection: Locator;
@@ -26,12 +26,13 @@ export default class BidStatus {
     //save:Locator
     cancel: Locator
     yes: Locator
+    //bidToSelectt:Locator
 
-async getStatus(status:string){
-    await TestUtils.click(this.homePage, "Clicking on Home Page")
-    const statusLocator=await this.page.locator(`//td[normalize-space()='${this.bidId}']/following-sibling::td[4]`);
-    await TestUtils.expectToContainText(statusLocator,status,`Verifying status : ${status}`)
-}
+    async getStatus(status: string) {
+        await TestUtils.click(this.homePage, "Clicking on Home Page")
+        const statusLocator = await this.page.locator(`//td[normalize-space()='${this.bidId}']/following-sibling::td[4]`);
+        await TestUtils.expectToContainText(statusLocator, status, `Verifying status : ${status}`)
+    }
 
     async statusFlow() {
         await TestUtils.click(this.homePage, "Clicking on Home Page")
@@ -54,15 +55,15 @@ async getStatus(status:string){
         await TestUtils.click(this.save, "Clicking on Save")
         await TestUtils.click(this.ok, "Clicking on Ok")
         await this.getStatus('Lost')
-}
+    }
 
- async CancelBid() {
+    async CancelBid() {
         await this.statusFlow()
         await TestUtils.click(this.cancel, "Selecting cancel")
         await TestUtils.click(this.yes, "Clikcing on yes")
         await TestUtils.click(this.ok, "Clicking on Ok")
         await this.getStatus('Cancelled')
-}
+    }
 
 
     constructor(private page: Page) {
@@ -85,18 +86,29 @@ async getStatus(status:string){
         //this.save=page.getByRole('button', { name: 'Save' })
         this.cancel = page.getByRole('button', { name: 'Cancel Bid Request' })
         this.yes = page.getByRole('button', { name: 'Yes' })
+
+        //this.bidToSelectt =page.locator(`//td[text()='${this.bidId}']/..//td//div//div/i[@class='dx-icon dx-icon-eyeopen']`);
     }
 
 
 
-    bidId: string = "";
+     bidId: string = "";
+    async selectBid(){
+ this.bidId = getBidId();
+       const bidToSelect = this.page.locator(`//td[text()='${this.bidId}']/..//td//div//div/i[@class='dx-icon dx-icon-eyeopen']`);
+        log(`Bid Id : ${this.bidId}`);
+          await TestUtils.click(bidToSelect, "Selecting Bid")
+    }
+
+
 
     async confirmBid() {
         // const bidId = getBidId();
-        this.bidId = getBidId();
-        const bidToSelect = this.page.locator(`//td[text()='${this.bidId}']/..//td//div//div/i[@class='dx-icon dx-icon-eyeopen']`);
-        log(`Bid Id : ${this.bidId}`);
-        await TestUtils.click(bidToSelect, "Selecting Bid")
+        // this.bidId = getBidId();
+        // const bidToSelect = this.page.locator(`//td[text()='${this.bidId}']/..//td//div//div/i[@class='dx-icon dx-icon-eyeopen']`);
+        // log(`Bid Id : ${this.bidId}`);
+       // await TestUtils.click(this.bidToSelectt, "Selecting Bid")
+        await this.selectBid();
         await TestUtils.click(this.bidsSection, "Clicking on Bids section")
         await TestUtils.click(this.techCert, "Clicking on Bids TechCert")
         await TestUtils.click(this.actionSymbol, "Clicking on Bids Action Symbol")
