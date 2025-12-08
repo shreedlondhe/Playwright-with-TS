@@ -11,13 +11,17 @@ import { log } from "./Logger.ts";
 export class dynamicData {
 
   //static constFilePath = path.resolve("C:\\Users\\Admin\\Desktop\\inventory_form\\Input.xlsx");
+ 
 
+  
+  
   static alphabets: string[] = [
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O'
   ];
 
   static async iterateAlphabets(path:string) {
     log("Started Editing Inventory file")
+
 
 
 const workbook = new ExcelJS.Workbook();

@@ -5,6 +5,7 @@ import ExcelJS from "exceljs";
 import { filePaths } from "../utils/FilePath.ts";
 import { getBidId } from "./CreateBid";
 import { log } from "../utils/Logger.ts";
+import { dynamicData } from "../utils/DynamicDataGenerator.ts";
 
 export default class VendorSubmission {
   AssetListSection: Locator;
@@ -31,7 +32,7 @@ async submitBid() {
    await this.selectBid();
     await TestUtils.click(this.AssetListSection, 'Clicking on Asset List section');
     filePaths.filePathForEdit = await TestUtils.downLoadFile(this.page, this.downloadBid, filePaths.downloadPath);
-    await this.updateCell();
+   await this.fillBidData();
     const uploadDownloadedBid = path.resolve(filePaths.filePathForEdit);
     await TestUtils.fileUpload(this.page, this.UploadBid, uploadDownloadedBid, 'Uploading file');
     await TestUtils.click(this.okButton, 'Clicking on OK button');
@@ -40,14 +41,35 @@ async submitBid() {
     const message = responseBody.message;
     log(`Extracted Message After clicking On submit is : "${message}"`);
     await TestUtils.click(this.okButton, 'Clicking on OK button');
+   
   }
-  async updateCell() {
-    await TestUtils.excelSheetEdit(filePaths.filePathForEdit, "Overview", "D19", 500);
-    await TestUtils.excelSheetEdit(filePaths.filePathForEdit, "Product Details", "P3", 65);
-    await TestUtils.excelSheetEdit(filePaths.filePathForEdit, "Product Details", "P4", 65);
-    await TestUtils.excelSheetEdit(filePaths.filePathForEdit, "Product Details", "Q3", 566);
-    await TestUtils.excelSheetEdit(filePaths.filePathForEdit, "Product Details", "Q4", 6565);
+  
+
+
+
+//  async readExcel() {
+//   const workbook = new ExcelJS.Workbook();
+//   await workbook.xlsx.readFile(filePaths.filePathForEdit);
+
+//   const sheet = workbook.getWorksheet("Product Details"); // or index
+
+//   if (!sheet) {
+//     throw new Error("Sheet 'Product Details' not found in Excel file");
+//   }
+
+//   const valueO2 = sheet.getCell("O4").value;
+
+//   console.log(" ********************************************************************************************************Value of cell O4:", valueO2);
+// }
+
+  
+async fillBidData(){
+await TestUtils.excelSheetEdit(filePaths.filePathForEdit, "Overview", "D19", TestUtils.getRandomInRange(101, 999));
+  for(let i=3;i<13;i++){
+    await TestUtils.excelSheetEdit(filePaths.filePathForEdit, "Product Details", `P${i}`, TestUtils.getRandomInRange(11, 99));
+    await TestUtils.excelSheetEdit(filePaths.filePathForEdit, "Product Details", `Q${i}`, TestUtils.getRandomInRange(1001, 9999));
 
   }
+}
 
 }
