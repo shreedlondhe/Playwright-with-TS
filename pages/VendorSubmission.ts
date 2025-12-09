@@ -6,7 +6,8 @@ import { filePaths } from "../utils/FilePath.ts";
 import { getBidId } from "./CreateBid";
 import { log } from "../utils/Logger.ts";
 import { dynamicData } from "../utils/DynamicDataGenerator.ts";
-import calculations from "./BidExcelCalculations.ts"
+import BidExcelCalculations from "./BidExcelCalculations.ts"
+import TechCertCalculations from "./Tech_CertCalculations.ts";
 
 export default class VendorSubmission {
   AssetListSection: Locator;
@@ -41,7 +42,8 @@ async submitBid() {
     const responseBody = await apiResponse.json();
     const message = responseBody.message;
     log(`Extracted Message After clicking On submit is : "${message}"`);
-    await TestUtils.click(this.okButton, 'Clicking on OK button');
+    await TestUtils.click(this.okButton, 'Clicking on OK button'); 
+    //await TechCertCalculations.productCount();
    
   }
     
