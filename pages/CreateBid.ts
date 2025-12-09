@@ -41,6 +41,7 @@ export default class CreateBid {
     await TestUtils.click(this.createBidButton, 'Clicking on Create Bid button');
     dynamicData.iterateAlphabets(filePaths.inventoryIntake);
     await TestUtils.sleep(3000)
+    
     await this.page.locator(this.chooseFilePath).setInputFiles(filePaths.inventoryIntake);
     await TestUtils.click(this.vendorDropdown, 'Clicking on Vendor dropdown');
     await TestUtils.click(this.selectAllVendors, 'Clicking on Select All Vendors');
@@ -49,7 +50,7 @@ export default class CreateBid {
     const [apiResponse] = await TestUtils.handleAPIResponse(this.page, '/apis/bid-request/submit', 201, this.submit, 'Clicking on Submit Bid Request');
     await TestUtils.getScreenshot(this.page, 'Taking screenshot after submitting bid request');
     const json = await apiResponse.json();
-    bidId = '6' + json.result.bidId;
+    bidId = 6000 + json.result.bidId;
     log(`Bid ID:" ${bidId}`);
     expect(json.result.message).toBe('bid request created successfully.');
     await TestUtils.click(this.okButton, 'Clicking on OK button');
