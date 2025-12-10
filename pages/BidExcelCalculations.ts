@@ -6,14 +6,14 @@ import { filePaths } from "../utils/FilePath.ts";
 import { getBidId } from "./CreateBid.ts";
 import { log } from "../utils/Logger.ts";
 import { dynamicData } from "../utils/DynamicDataGenerator.ts";
-import {productType}  from "C:/Users/Admin/Downloads/PyxTech/pages/Tech_CertCalculations.ts";
+import { productType } from "C:/Users/Admin/Downloads/PyxTech/pages/Tech_CertCalculations.ts";
 
 
 
 export default class BidExcelCalculations {
-    
 
-    constructor() {
+
+    constructor(private page: Page) {
 
     }
 
@@ -31,11 +31,8 @@ export default class BidExcelCalculations {
         await this.getTotalEstimateLogisticsFee();
         await this.getTotalEstimateServiceFee();
         await this.getNetAmount();
-       
+
     }
-
-    
-
 
     static async readExcel(sheetName: string): Promise<ExcelJS.Worksheet> {
         const workbook = new ExcelJS.Workbook();
@@ -110,10 +107,10 @@ export default class BidExcelCalculations {
 
         for (const [product, quantity] of productMap) {
 
-            const stanardFees= productType[product];
+            const stanardFees = productType[product];
             console.log(`Standard Fees for ${product} : ${stanardFees}`);
 
-           // console.log(product, quantity);
+            // console.log(product, quantity);
         }
 
         //console.log(productMap)

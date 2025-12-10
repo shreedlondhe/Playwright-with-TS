@@ -3,16 +3,10 @@ import path from 'path'
 
 export const filePaths = {
 
-  // path for Bid form to be downloaded,edit and upload
- //fileToUpload : path.resolve('C:\\Users\\Admin\\Desktop\\PyxTech_Demo\\UploadForm.xlsx'),
-   filePathForEdit: '',
-   downloadPath: path.resolve('C:\\Users\\Admin\\Downloads\\VendorDownloads'),
+  // below path for Bid form to be downloaded,edit and upload
+  filePathForEdit: '',
+  downloadPath: path.resolve('C:\\Users\\Admin\\Downloads\\VendorDownloads'),
+ // below path for upload inventory intake form
+  downloadPathIntakeForm: path.resolve('C:\\Users\\Admin\\Downloads\\VendorDownloads\\IntakeForms')
 
-
-// path for upload inventory intake form
-     inventoryIntake : path.resolve("C:\\Users\\Admin\\Downloads\\PyxTech\\Input-template.xlsx"),
-     inventoryIntakeEdit : path.resolve("D:\\FormToUpload"),
-
-
-   
 };

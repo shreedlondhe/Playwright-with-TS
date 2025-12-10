@@ -20,13 +20,14 @@ export default class CreateBid {
   SSDLogo: Locator
   logoutButton: Locator;
   okButton: Locator;
-  chooseFilePath: string
+  chooseFilePath: string;
   downloadBtn: Locator
   visibleFile: Locator
   constructor(private page: Page) {
     this.createBidButton = page.getByText("Create New Bid Request");
     this.downloadBtn = page.getByRole('button', { name: 'Download Template' });
     this.chooseFilePath = "//input[@type='file' and contains(@accept,'.xlsx, .xls')]";
+  // this.chooseFilePath = page.getByRole('button', { name: 'Choose File' }).first()
     this.vendorDropdown = page.locator('.dx-texteditor-input-container.dx-tag-container').first()
     this.selectAllVendors = page.getByText("Select All");
     this.selectBusinessUnit = page.getByRole('combobox', { name: 'Select Business Unit' });
@@ -37,12 +38,16 @@ export default class CreateBid {
     this.okButton = page.getByRole('button', { name: 'OK' })
     this.visibleFile = page.locator('i').nth(5)
 }
-    async createBid() {
+    async createBid(){
+     
     await TestUtils.click(this.createBidButton, 'Clicking on Create Bid button');
-    dynamicData.iterateAlphabets(filePaths.inventoryIntake);
+      filePaths.filePathForEdit = await TestUtils.downLoadFile(this.page, this.downloadBtn, filePaths.downloadPathIntakeForm);
+   dynamicData.iterateAlphabets(filePaths.filePathForEdit); 
     await TestUtils.sleep(3000)
-    
-    await this.page.locator(this.chooseFilePath).setInputFiles(filePaths.inventoryIntake);
+
+   await this.page.locator(this.chooseFilePath).setInputFiles(filePaths.filePathForEdit);
+   await TestUtils.sleep(1000)
+
     await TestUtils.click(this.vendorDropdown, 'Clicking on Vendor dropdown');
     await TestUtils.click(this.selectAllVendors, 'Clicking on Select All Vendors');
     await TestUtils.click(this.selectBusinessUnit, 'Clicking on Select Business Unit');

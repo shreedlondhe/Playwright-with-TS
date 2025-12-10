@@ -90,24 +90,19 @@ export default class BidStatus {
         //this.bidToSelectt =page.locator(`//td[text()='${this.bidId}']/..//td//div//div/i[@class='dx-icon dx-icon-eyeopen']`);
     }
 
-
-
-     bidId: string = "";
-    async selectBid(){
- this.bidId = getBidId();
-       const bidToSelect = this.page.locator(`//td[text()='${this.bidId}']/..//td//div//div/i[@class='dx-icon dx-icon-eyeopen']`);
+    bidId: string = "";
+    async selectBid() {
+        this.bidId = getBidId();
+        const bidToSelect = this.page.locator(`//td[text()='${this.bidId}']/..//td//div//div/i[@class='dx-icon dx-icon-eyeopen']`);
         log(`Bid Id : ${this.bidId}`);
-          await TestUtils.click(bidToSelect, "Selecting Bid")
+        await TestUtils.click(bidToSelect, "Selecting Bid")
     }
-
-
-
     async confirmBid() {
         // const bidId = getBidId();
         // this.bidId = getBidId();
         // const bidToSelect = this.page.locator(`//td[text()='${this.bidId}']/..//td//div//div/i[@class='dx-icon dx-icon-eyeopen']`);
         // log(`Bid Id : ${this.bidId}`);
-       // await TestUtils.click(this.bidToSelectt, "Selecting Bid")
+        // await TestUtils.click(this.bidToSelectt, "Selecting Bid")
         await this.selectBid();
         await TestUtils.click(this.bidsSection, "Clicking on Bids section")
         await TestUtils.click(this.techCert, "Clicking on Bids TechCert")

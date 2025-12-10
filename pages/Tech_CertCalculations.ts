@@ -36,7 +36,7 @@ export default class TechCertCalculations {
     static LenovoTotalCost = 0;
     static LenovoGP = 0;
 
-static initializeValues() {
+    static initializeValues() {
 
         this.grossRemarketingValue = BidExcelCalculations.remarketingvalue;
         this.assetQTY = BidExcelCalculations.totalAssetCount;
@@ -90,11 +90,11 @@ static initializeValues() {
     }
 
     static roundOff(value: number): number {
-  return Number(value.toFixed(2));
-}
-constructor() { }
+        return Number(value.toFixed(2));
+    }
+    constructor() { }
 
- static async productCount() {
+    static async productCount() {
 
         const productMap = new Map<string, number>();
         for (let i = 3; i < 13; i++) {
@@ -113,12 +113,12 @@ constructor() { }
         }
         //let totalStandardFees = 0;
         for (const [product, quantity] of productMap) {
-       const stanardFees = productType[product];
+            const stanardFees = productType[product];
             this.lenovoProcessingCharge += stanardFees * quantity;
             log(`Standard Fees for ${product} : ${stanardFees}`);
-// console.log(product, quantity);
+            // console.log(product, quantity);
         }
-       
+
 
     }
 }

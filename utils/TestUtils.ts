@@ -208,9 +208,9 @@ export default class TestUtils {
   static async downLoadFile(page: Page, locator: Locator, downloadPath: string): Promise<string> {
     const [download] = await Promise.all([
       page.waitForEvent("download"),
-      this.click(locator, "Clicking download button")
+      this.click(locator, "Clicking download button") 
     ]);
-
+    
     const fileName = download.suggestedFilename();
     const filePath = `${downloadPath}/${fileName}`;
     await download.saveAs(filePath);
