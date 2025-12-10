@@ -42,7 +42,7 @@ export default class CreateBid {
      
     await TestUtils.click(this.createBidButton, 'Clicking on Create Bid button');
       filePaths.filePathForEdit = await TestUtils.downLoadFile(this.page, this.downloadBtn, filePaths.downloadPathIntakeForm);
-   dynamicData.iterateAlphabets(filePaths.filePathForEdit); 
+   dynamicData.dataFiller(filePaths.filePathForEdit); 
     await TestUtils.sleep(3000)
 
    await this.page.locator(this.chooseFilePath).setInputFiles(filePaths.filePathForEdit);

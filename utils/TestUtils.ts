@@ -318,4 +318,14 @@ static async compareNumbers(num1: number, num2: number) {
     expect(num1).toBe(num2);
   }
 
+   static async readExcelAndGetData(sheetName: string, filePath: string): Promise<ExcelJS.Worksheet> {
+          const workbook = new ExcelJS.Workbook();
+          await workbook.xlsx.readFile(filePath);
+          const sheet = workbook.getWorksheet(sheetName);
+          if (!sheet) {
+              throw new Error(`Sheet ${sheetName} not found in Excel file`);
+          }
+          return sheet;
+      }
+
 }

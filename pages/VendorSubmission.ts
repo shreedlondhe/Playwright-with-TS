@@ -49,7 +49,8 @@ async submitBid() {
     
 async fillBidData(){
 await TestUtils.excelSheetEdit(filePaths.filePathForEdit, "Overview", "D19", TestUtils.getRandomInRange(101, 999));
-  for(let i=3;i<13;i++){
+log(`Filling Bid Form with Service fee and Product Resake Value  for rows : ${dynamicData.noOFRows}`);
+  for(let i=3;i<=dynamicData.noOFRows;i++){
     await TestUtils.excelSheetEdit(filePaths.filePathForEdit, "Product Details", `P${i}`, TestUtils.getRandomInRange(11, 99));
     await TestUtils.excelSheetEdit(filePaths.filePathForEdit, "Product Details", `Q${i}`, TestUtils.getRandomInRange(1001, 9999));
 

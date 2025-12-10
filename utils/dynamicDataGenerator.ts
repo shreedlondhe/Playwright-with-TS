@@ -1,29 +1,25 @@
-import TestUtils from "./TestUtils.ts";
-import {productTypes,manufacturers,modelNumbers,productQuantities,functionalConditionalGrades,modelYears,processorTypes,processorQuantities,memoryTypeSizes,memoryQuantities,driveTypes,driveSize,driveQuantities,gpuTypeSizes,gpuQuantity} from "./DynamicDataStore.ts";
-import path from 'path'
+
+import TestUtils from "./TestUtils.ts"; import path from 'path'
 import ExcelJS from "exceljs";
 import { filePaths } from "./FilePath.ts";
 import { log } from "./Logger.ts";
 
-
-
-
 export class dynamicData {
 
-  //static constFilePath = path.resolve("C:\\Users\\Admin\\Desktop\\inventory_form\\Input.xlsx");
- 
-  static alphabets: string[] = [
+  static noOFRows: number = 0;
+  static columns: string[] = [
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O'
   ];
 
-  static async iterateAlphabets(path:string) {
-    log("Started Editing Inventory file")
+  static async dataFiller(path: string) {
+    log("Started Editing Bid Form")
+    this.noOFRows = TestUtils.getRandomInRange(5, 20) - 3;
+    log(`Master sheet location: ${filePaths.masterSheet}`);
+    log(`Added data for number of rows: ${this.noOFRows} from master sheet`);
 
-
-
-const workbook = new ExcelJS.Workbook();
+    const workbook = new ExcelJS.Workbook();
     await workbook.xlsx.readFile(path);
-   const sheet1 = workbook.getWorksheet("Product Details");
+    const sheet1 = workbook.getWorksheet("Product Details");
     if (!sheet1) {
       throw new Error("Worksheet 'Product Details' not found");
     }
@@ -31,70 +27,67 @@ const workbook = new ExcelJS.Workbook();
     if (!sheet2) {
       throw new Error("Worksheet 'Overview' not found");
     }
-sheet2.getCell("D7").value =TestUtils.getFullName();
-sheet2.getCell("D8").value =TestUtils.getAddress();
-sheet2.getCell("D9").value ="Singapore";
-sheet2.getCell("D10").value ="2025/12/12";
-sheet2.getCell("D16").value =TestUtils.getStatement();
+    sheet2.getCell("D7").value = TestUtils.getFullName();
+    sheet2.getCell("D8").value = TestUtils.getAddress();
+    sheet2.getCell("D9").value = "Singapore";
+    sheet2.getCell("D10").value = "2025/12/12";
+    sheet2.getCell("D16").value = TestUtils.getStatement();
 
-    for (let i = 0; i < this.alphabets.length; i++) {
-     for (let k = 3; k < 13; k++) {
-if (this.alphabets[i] === 'A') {
-    sheet1.getCell(`${this.alphabets[i]}${k}`).value = productTypes[TestUtils.getRandomInRange(1, 10)];
-}
-if (this.alphabets[i] === 'B') {
-         sheet1.getCell(`${this.alphabets[i]}${k}`).value = manufacturers[TestUtils.getRandomInRange(1, 10)];
-}
- if (this.alphabets[i] === 'C') {
-    sheet1.getCell(`${this.alphabets[i]}${k}`).value = modelNumbers[TestUtils.getRandomInRange(1, 10)];
-}
-if (this.alphabets[i] === 'D') {
-          sheet1.getCell(`${this.alphabets[i]}${k}`).value = productQuantities[TestUtils.getRandomInRange(1, 10)];
-}
-if (this.alphabets[i] === 'E') {
-          sheet1.getCell(`${this.alphabets[i]}${k}`).value = functionalConditionalGrades[TestUtils.getRandomInRange(1, 10)];
-}
-if (this.alphabets[i] === 'F') {
-          sheet1.getCell(`${this.alphabets[i]}${k}`).value = modelYears[TestUtils.getRandomInRange(1, 10)];
-}
-if (this.alphabets[i] === 'G') {
-          sheet1.getCell(`${this.alphabets[i]}${k}`).value = processorTypes[TestUtils.getRandomInRange(1, 10)];
-}
-if (this.alphabets[i] === 'H') {
-          sheet1.getCell(`${this.alphabets[i]}${k}`).value = processorQuantities[TestUtils.getRandomInRange(1, 10)];
-}
-if (this.alphabets[i] === 'I') {
-          sheet1.getCell(`${this.alphabets[i]}${k}`).value = memoryTypeSizes[TestUtils.getRandomInRange(1, 10)];
-}
-if (this.alphabets[i] === 'J') {
-          sheet1.getCell(`${this.alphabets[i]}${k}`).value = memoryQuantities[TestUtils.getRandomInRange(1, 10)];
- }
-if (this.alphabets[i] === 'K') {
-          sheet1.getCell(`${this.alphabets[i]}${k}`).value = driveTypes[TestUtils.getRandomInRange(1, 10)];
-}
-if (this.alphabets[i] === 'L') {
-          sheet1.getCell(`${this.alphabets[i]}${k}`).value = driveSize[TestUtils.getRandomInRange(1, 10)];
-}
-if (this.alphabets[i] === 'M') {
-          sheet1.getCell(`${this.alphabets[i]}${k}`).value = driveQuantities[TestUtils.getRandomInRange(1, 10)];
-}
-if (this.alphabets[i] === 'N') {
-          sheet1.getCell(`${this.alphabets[i]}${k}`).value = gpuTypeSizes[TestUtils.getRandomInRange(1, 10)];
-}
-if (this.alphabets[i] === 'O') {
-          sheet1.getCell(`${this.alphabets[i]}${k}`).value = gpuQuantity[TestUtils.getRandomInRange(1, 10)];
-}
- }
+    for (let i = 0; i < this.columns.length; i++) {
+      for (let k = 3; k <= this.noOFRows; k++) {
+        if (this.columns[i] === 'A') {
+          sheet1.getCell(`${this.columns[i]}${k}`).value = (await TestUtils.readExcelAndGetData('Product Details', filePaths.masterSheet)).getCell(`A${TestUtils.getRandomInRange(3, 21)}`).value
+        }
+        if (this.columns[i] === 'B') {
+          sheet1.getCell(`${this.columns[i]}${k}`).value = (await TestUtils.readExcelAndGetData('Product Details', filePaths.masterSheet)).getCell(`B${TestUtils.getRandomInRange(3, 21)}`).value
+        }
+        if (this.columns[i] === 'C') {
+          sheet1.getCell(`${this.columns[i]}${k}`).value = (await TestUtils.readExcelAndGetData('Product Details', filePaths.masterSheet)).getCell(`C${TestUtils.getRandomInRange(3, 21)}`).value
+        }
+        if (this.columns[i] === 'D') {
+          sheet1.getCell(`${this.columns[i]}${k}`).value = (await TestUtils.readExcelAndGetData('Product Details', filePaths.masterSheet)).getCell(`D${TestUtils.getRandomInRange(3, 21)}`).value
+        }
+        if (this.columns[i] === 'E') {
+          sheet1.getCell(`${this.columns[i]}${k}`).value = (await TestUtils.readExcelAndGetData('Product Details', filePaths.masterSheet)).getCell(`E${TestUtils.getRandomInRange(3, 21)}`).value
+        }
+        if (this.columns[i] === 'F') {
+          sheet1.getCell(`${this.columns[i]}${k}`).value = (await TestUtils.readExcelAndGetData('Product Details', filePaths.masterSheet)).getCell(`F${TestUtils.getRandomInRange(3, 21)}`).value
+        }
+        if (this.columns[i] === 'G') {
+          sheet1.getCell(`${this.columns[i]}${k}`).value = (await TestUtils.readExcelAndGetData('Product Details', filePaths.masterSheet)).getCell(`G${TestUtils.getRandomInRange(3, 21)}`).value
+        }
+        if (this.columns[i] === 'H') {
+          sheet1.getCell(`${this.columns[i]}${k}`).value = (await TestUtils.readExcelAndGetData('Product Details', filePaths.masterSheet)).getCell(`H${TestUtils.getRandomInRange(3, 21)}`).value
+        }
+        if (this.columns[i] === 'I') {
+          sheet1.getCell(`${this.columns[i]}${k}`).value = (await TestUtils.readExcelAndGetData('Product Details', filePaths.masterSheet)).getCell(`I${TestUtils.getRandomInRange(3, 21)}`).value
+        }
+        if (this.columns[i] === 'J') {
+          sheet1.getCell(`${this.columns[i]}${k}`).value = (await TestUtils.readExcelAndGetData('Product Details', filePaths.masterSheet)).getCell(`J${TestUtils.getRandomInRange(3, 21)}`).value
+        }
+        if (this.columns[i] === 'K') {
+          sheet1.getCell(`${this.columns[i]}${k}`).value = (await TestUtils.readExcelAndGetData('Product Details', filePaths.masterSheet)).getCell(`K${TestUtils.getRandomInRange(3, 21)}`).value
+        }
+        if (this.columns[i] === 'L') {
+          sheet1.getCell(`${this.columns[i]}${k}`).value = (await TestUtils.readExcelAndGetData('Product Details', filePaths.masterSheet)).getCell(`L${TestUtils.getRandomInRange(3, 21)}`).value
+        }
+        if (this.columns[i] === 'M') {
+          sheet1.getCell(`${this.columns[i]}${k}`).value = (await TestUtils.readExcelAndGetData('Product Details', filePaths.masterSheet)).getCell(`M${TestUtils.getRandomInRange(3, 21)}`).value
+        }
+        if (this.columns[i] === 'N') {
+          sheet1.getCell(`${this.columns[i]}${k}`).value = (await TestUtils.readExcelAndGetData('Product Details', filePaths.masterSheet)).getCell(`N${TestUtils.getRandomInRange(3, 21)}`).value
+        }
+        if (this.columns[i] === 'O') {
+          sheet1.getCell(`${this.columns[i]}${k}`).value = (await TestUtils.readExcelAndGetData('Product Details', filePaths.masterSheet)).getCell(`O${TestUtils.getRandomInRange(3, 21)}`).value
+        }
+      }
     }
-     await workbook.xlsx.writeFile(path);
-     log("Completed Editing Inventory file")
-   
+    await workbook.xlsx.writeFile(path);
+    log("Completed Editing Bid Form")
+
   }
-  
+
 }
-
-
-//dynamicData.iterateAlphabets();
 
 
 
