@@ -27,11 +27,6 @@ export const productType: Record<string, number> = {
     "Large Assets (>=22.7 kg, any peripheral not included in other categories)": 5.25,
     "IT Spam (Cabling, Keyboards, Mice, etc.)": 5.25
 
-
-
-
-
-
 };
 
 export default class TechCertCalculations {
