@@ -43,7 +43,20 @@ test('Test 02 TechCert calculations', async ({ loginPage, createBid, vendorSubmi
    
 })
 
+
+test('test',async({ loginPage, createBid, vendorSubmission ,ssdBidsSection_page})=>{
+     await loginPage.goto();
+   await loginPage.loginToApplication(process.env.email_ssd!, process.env.password!);
+   await createBid.createBid();
+})
+
+test.beforeEach(async ({}, testInfo) => {
+  console.log(`>>>>>>>>>>>>>> STARTING TEST: ${testInfo.title} <<<<<<<<<<<<<<`);
+});
+
 test.afterEach(async ({ page },testInfo) => {
+
+   console.log(`>>>>>>>>>>>>>> ENDING TEST: ${testInfo.title} <<<<<<<<<<<<<<`);
      try {
     const tracePath = testInfo.outputPath("trace.zip");
 

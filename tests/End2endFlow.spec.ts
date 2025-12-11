@@ -63,7 +63,7 @@ test('Test 05 Bid cancel Flow', async ({ loginPage, createBid, vendorSubmission 
    await loginPage.goto();
    await loginPage.loginToApplication(process.env.email_ssd!, process.env.password!);
    await createBid.createBid();
-   await createBid.logout();
+   await createBid.logout();  
    await loginPage.loginToApplication(process.env.email_vendor!, process.env.password!);
    await vendorSubmission.submitBid();
    await createBid.logout();
@@ -87,7 +87,13 @@ test('Test 06 Bid decline Flow', async ({ loginPage, createBid,vendorBidStatus})
 
 
 
+test.beforeEach(async ({}, testInfo) => {
+  console.log(`>>>>>>>>>>>>>> STARTING TEST: ${testInfo.title} <<<<<<<<<<<<<<`);
+});
+
 test.afterEach(async ({ page },testInfo) => {
+
+   console.log(`>>>>>>>>>>>>>> ENDING TEST: ${testInfo.title} <<<<<<<<<<<<<<`);
      try {
     const tracePath = testInfo.outputPath("trace.zip");
 
