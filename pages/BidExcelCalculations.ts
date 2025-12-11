@@ -45,8 +45,8 @@ export default class BidExcelCalculations {
     }
 
     static async getRemarketingValue() {
-        //  this.remarketingvalue = 0;
-        for (let i = 3; i < 13; i++) {
+        //  this.remarketingvalue = 0; 
+        for (let i = 3; i <= dynamicData.noOFRows; i++) {
             let dValue = this.toNumber((await this.readExcel("Product Details")).getCell(`D${i}`).value);
             let qValue = this.toNumber((await this.readExcel("Product Details")).getCell(`Q${i}`).value);
             this.remarketingvalue += this.toNumber(dValue) * this.toNumber(qValue);
@@ -56,7 +56,7 @@ export default class BidExcelCalculations {
 
     static async getTotalAssets() {
         // let total = 0;
-        for (let i = 3; i < 13; i++) {
+        for (let i = 3; i <= dynamicData.noOFRows; i++) {
             this.totalAssetCount += this.toNumber((await this.readExcel("Product Details")).getCell(`D${i}`).value);
         }
         log(`Total Assets = ${this.totalAssetCount}`);
@@ -69,9 +69,9 @@ export default class BidExcelCalculations {
     }
 
 
-    static async getTotalEstimateServiceFee() {
+    static async getTotalEstimateServiceFee() { 
         // let EstimateServiceFee = 0;
-        for (let i = 3; i < 13; i++) {
+        for (let i = 3; i <= dynamicData.noOFRows; i++) {
             let dValue = this.toNumber((await this.readExcel("Product Details")).getCell(`D${i}`).value);
             let qValue = this.toNumber((await this.readExcel("Product Details")).getCell(`P${i}`).value);
             this.EstimateProcessingFee += this.toNumber(dValue) * this.toNumber(qValue);
@@ -90,7 +90,7 @@ export default class BidExcelCalculations {
     static async productCount() {
 
         const productMap = new Map<string, number>();
-        for (let i = 3; i < 13; i++) {
+        for (let i = 3; i <= dynamicData.noOFRows; i++) {
             let product: any = (await this.readExcel("Product Details")).getCell(`A${i}`).value;
             let quantity = this.toNumber((await this.readExcel("Product Details")).getCell(`D${i}`).value);
 

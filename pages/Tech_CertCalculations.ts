@@ -4,6 +4,7 @@ import ExcelJS from "exceljs";
 import { filePaths } from "../utils/FilePath.ts";
 import { log } from "../utils/Logger.ts";
 import BidExcelCalculations from "./BidExcelCalculations.ts";
+import { dynamicData } from "../utils/DynamicDataGenerator.ts";
 
 export const productType: Record<string, number> = {
     "Desktop": 5.25,
@@ -15,7 +16,22 @@ export const productType: Record<string, number> = {
     "Flat Panel Display/Monitor": 4,
     "Cathode Ray Tube (CRT) Monitor": 10.25,
     "Server (1 Drive)": 10.25,
-    "Storage (1 Drive)": 0
+    "Storage (1 Drive)": 0,
+    "Additional Server or Storage Drives": 0,
+    "Loose Media Drive (SSD, HDD, etc.)": 0,
+    "Loose Tape Drive": 0,
+   // "Multi-function Device (<22.7 kg, Printer, Copier, Scanner, Fax)": 4,
+    "Networking (Switch, Router, Hub, UPS)": 10.25,
+   "Small Serialized Assets (<1.4 kg, any peripheral not included in other categories)": 4,
+   "Medium Assets (1.4 kg - 22.7 kg, any peripheral not included in other categories)": 10.25,
+    "Large Assets (>=22.7 kg, any peripheral not included in other categories)": 5.25,
+    "IT Spam (Cabling, Keyboards, Mice, etc.)": 5.25
+
+
+
+
+
+
 };
 
 export default class TechCertCalculations {
@@ -66,12 +82,12 @@ export default class TechCertCalculations {
             this.roundOff(this.customerPRV + this.processingFee + this.logisticsFees + this.PMOAllocation);
 
         this.LenovoGP =
-            this.roundOff(this.LenovoTotalRev - this.LenovoTotalCost);
+            this.roundOff(this.LenovoTotalRev - this.LenovoTotalCost); 
     }
 
     static async finalTechCertCalculations() {
         await this.productCount()
-        this.initializeValues();
+        await this.initializeValues();
         log(`Lenovo Processing Charge: ${this.lenovoProcessingCharge}`);
         log(`Gross Remarketing Value: ${this.grossRemarketingValue}`);
         log(`Asset Quantity: ${this.assetQTY}`);
@@ -97,11 +113,11 @@ export default class TechCertCalculations {
     static async productCount() {
 
         const productMap = new Map<string, number>();
-        for (let i = 3; i < 13; i++) {
+        for (let i = 3; i <=dynamicData.noOFRows; i++) {
             let product: any = (await BidExcelCalculations.readExcel("Product Details")).getCell(`A${i}`).value;
             let quantity = BidExcelCalculations.toNumber((await BidExcelCalculations.readExcel("Product Details")).getCell(`D${i}`).value);
 
-            if (!product || isNaN(quantity)) return;
+           // if (!product || isNaN(quantity)) return;
 
             if (productMap.has(product)) {
                 const prev = productMap.get(product) || 0;
@@ -111,12 +127,13 @@ export default class TechCertCalculations {
             }
 
         }
+      //  console.log(productMap);
         //let totalStandardFees = 0;
         for (const [product, quantity] of productMap) {
             const stanardFees = productType[product];
             this.lenovoProcessingCharge += stanardFees * quantity;
             log(`Standard Fees for ${product} : ${stanardFees}`);
-            // console.log(product, quantity);
+           //  console.log(product, quantity);
         }
 
 
