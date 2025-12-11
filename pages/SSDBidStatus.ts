@@ -6,6 +6,7 @@ import { filePaths } from "../utils/FilePath.ts";
 import { dynamicData } from "../utils/DynamicDataGenerator.ts";
 import { log } from "../utils/Logger.ts";
 import { getBidId } from "./CreateBid.ts";
+import { el } from "@faker-js/faker";
 
 export default class BidStatus {
     bidsSection: Locator;
@@ -108,19 +109,62 @@ export default class BidStatus {
         await TestUtils.click(this.techCert, "Clicking on Bids TechCert")
         await TestUtils.click(this.actionSymbol, "Clicking on Bids Action Symbol")
         await this.setMargin();
-        await TestUtils.click(this.saveAndDownload, "Clicking on the save And Download")
+        if(this.flag==true){
+             await TestUtils.click(this.saveAndDownload, "Clicking on the save And Download")
         await TestUtils.click(this.confirm, "Clicking on the confirm")
         await TestUtils.click(this.save, "Clicking on this save")
         await TestUtils.click(this.ok, "Clicking on Ok")
         await TestUtils.click(this.close, "Clicking on close")
         await TestUtils.getScreenshot(this.page, 'Taking screenshot after logout');
+        }else{
+            log('Margin is in negative range, skipping the bid confirmation steps.');
+        }
+       
     }
-
-    async setMargin() {
-        await TestUtils.fill(this.increaseArrow, '50', "Setting margin to 50%")
-        await this.page.keyboard.press('Enter');
-        await TestUtils.sleep(1000)
-
-    }
-
+async getCurrentMarginValue():Promise<number> {
+     let value=await TestUtils.getText(this.margin, "Getting the margin value")
+        const numericValue = value?.replace('%', '').trim();
+        log(`Current Margin Value: ${numericValue}`);
+        return Number(numericValue);
 }
+
+    flag:boolean=true;
+    async setMargin() {
+        let value=0;
+    let increaseValue=10;
+    let decreaseValue=10;
+
+        while(value> 50 ||value < 20){
+
+            if (value > 50) {
+                await TestUtils.fill(this.increaseArrow, `${decreaseValue}`, `Setting margin to ${decreaseValue}%`)
+                await this.page.keyboard.press('Enter');
+                await TestUtils.sleep(1000)
+                 value=await this.getCurrentMarginValue();
+                decreaseValue+=5;
+            }
+            if (value < 20) {
+                await TestUtils.fill(this.increaseArrow, `${increaseValue}`, `Setting margin to ${increaseValue}%`)
+                await this.page.keyboard.press('Enter');
+                await TestUtils.sleep(1000)
+                 value=await this.getCurrentMarginValue();
+                increaseValue+=5;
+                if(increaseValue>90){
+
+                }
+            }
+            if(value < 50 && value > 20){
+                log('Now margin is in range');
+                break
+            }
+           
+            
+
+
+        }
+        
+    }
+       
+
+    }
+
