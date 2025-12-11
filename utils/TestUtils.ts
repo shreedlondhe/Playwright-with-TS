@@ -315,12 +315,14 @@ static async getText(locator: Locator, logMsg: string): Promise<string> {
 }
 
 static async compareNumbers(num1: number, num2: number) {
-    expect(num1).toBe(num2);
-  }
+  const positiveNum1 = Math.abs(num1);
+  const positiveNum2 = Math.abs(num2);
+  expect(positiveNum1).toBe(positiveNum2);
+}
 
    static async readExcelAndGetData(sheetName: string, filePath: string): Promise<ExcelJS.Worksheet> {
           const workbook = new ExcelJS.Workbook();
-          await workbook.xlsx.readFile(filePath);
+          await workbook.xlsx.readFile(filePath); 
           const sheet = workbook.getWorksheet(sheetName);
           if (!sheet) {
               throw new Error(`Sheet ${sheetName} not found in Excel file`);

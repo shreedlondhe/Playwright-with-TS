@@ -56,7 +56,7 @@ export default class CreateBid {
     await TestUtils.getScreenshot(this.page, 'Taking screenshot after submitting bid request');
     const json = await apiResponse.json();
     bidId = 6000 + json.result.bidId;
-    log(`Bid ID:" ${bidId}`);
+    log(`Bid ID: ${bidId}`);
     expect(json.result.message).toBe('bid request created successfully.');
     await TestUtils.click(this.okButton, 'Clicking on OK button');
   }

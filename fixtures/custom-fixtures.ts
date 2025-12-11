@@ -9,9 +9,10 @@ import SsdBidsSection_page from '../pages/SsdBidsSection_page.ts';
 import BidExcelCalculations from '../pages/BidExcelCalculations.ts'
 
 import { log } from '../utils/Logger';
+import TechCert_UICalculations from '../pages/Tech_Cert_UICalculations.ts';
 
 
-export const test = base.extend<{ loginPage: LoginPage, createBid: CreateBid , vendorSubmission: VendorSubmission,bidStatus:BidStatus,vendorBidStatus:VendorBidStatus,ssdBidsSection_page:SsdBidsSection_page,bidExcelCalculations:BidExcelCalculations}>({
+export const test = base.extend<{ loginPage: LoginPage, createBid: CreateBid , vendorSubmission: VendorSubmission,bidStatus:BidStatus,vendorBidStatus:VendorBidStatus,ssdBidsSection_page:SsdBidsSection_page,bidExcelCalculations:BidExcelCalculations,techCert_UICalculations:TechCert_UICalculations}>({
   loginPage: async ({ page }, use) => {
    
     await use(new LoginPage(page));
@@ -38,6 +39,10 @@ export const test = base.extend<{ loginPage: LoginPage, createBid: CreateBid , v
   },
   bidExcelCalculations: async ({ page }, use) => {
     await use(new BidExcelCalculations(page));
+
+  },
+  techCert_UICalculations: async ({ page }, use) => {
+    await use(new TechCert_UICalculations(page));
 
   }
    

@@ -7,7 +7,7 @@ import { getBidId } from "./CreateBid";
 import { log } from "../utils/Logger.ts";
 import { dynamicData } from "../utils/DynamicDataGenerator.ts";
 import BidExcelCalculations from "./BidExcelCalculations.ts"
-import TechCertCalculations from "./Tech_CertCalculations.ts";
+import TechCertCalculations from "./Tech_Cert_ExcelCalculations.ts";
 
 export default class VendorSubmission {
   AssetListSection: Locator;

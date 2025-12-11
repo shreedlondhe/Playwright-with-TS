@@ -4,12 +4,12 @@ import * as fs from "fs";
 import * as dotenv from "dotenv";
 import TestUtils from "../utils/TestUtils.ts";
 import BidExcelCalculations from "../pages/BidExcelCalculations.ts";
-import TechCertCalculations from "../pages/Tech_CertCalculations.ts";
+import TechCertCalculations from "../pages/Tech_Cert_ExcelCalculations.ts";
 dotenv.config();
 
 
 
-test('Test 01 TechCert calculations', async ({ loginPage, createBid, vendorSubmission ,ssdBidsSection_page}) => {
+test('Test 01 TechCert calculations', async ({ loginPage, createBid, vendorSubmission ,bidStatus,techCert_UICalculations}) => {
    await loginPage.goto();
    await loginPage.loginToApplication(process.env.email_ssd!, process.env.password!);
    await createBid.createBid();
@@ -18,9 +18,25 @@ test('Test 01 TechCert calculations', async ({ loginPage, createBid, vendorSubmi
    await vendorSubmission.submitBid();
    await createBid.logout();
    await loginPage.loginToApplication(process.env.email_ssd!, process.env.password!);
-   await ssdBidsSection_page.getData();
+   //await ssdBidsSection_page.getData();
    await BidExcelCalculations.allExcelCalculation();
    await TechCertCalculations.finalTechCertCalculations();
+   await bidStatus.openTechCertSection();
+   await techCert_UICalculations.getUIValues();
+   await TestUtils.compareNumbers(TechCertCalculations.grossRemarketingValue,techCert_UICalculations.grossRemarketingValue);
+   await TestUtils.compareNumbers(TechCertCalculations.logisticsFees,techCert_UICalculations.logisticsFees);
+   await TestUtils.compareNumbers(TechCertCalculations.processingFee,techCert_UICalculations.processingFee);
+   await TestUtils.compareNumbers(TechCertCalculations.assetQTY,techCert_UICalculations.assetQTY);
+   await TestUtils.compareNumbers(TechCertCalculations.lenovoProcessingCharge,techCert_UICalculations.lenovoProcessingCharge);
+   await TestUtils.compareNumbers(TechCertCalculations.processingUplift,techCert_UICalculations.processingUplift);
+   await TestUtils.compareNumbers(TechCertCalculations.Diff1,techCert_UICalculations.diff1);
+   await TestUtils.compareNumbers(TechCertCalculations.Diff2,techCert_UICalculations.diff2);
+   await TestUtils.compareNumbers(TechCertCalculations.PMOAllocation,techCert_UICalculations.pmoAllocation);
+   await TestUtils.compareNumbers(TechCertCalculations.LenovoTotalRev,techCert_UICalculations.lenovoTotalRev);
+   await TestUtils.compareNumbers(TechCertCalculations.LenovoTotalCost,techCert_UICalculations.lenovoTotalCost);
+   await TestUtils.compareNumbers(TechCertCalculations.LenovoGP,techCert_UICalculations.lenovoGP);
+
+
    
 })
 

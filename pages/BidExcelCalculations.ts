@@ -6,7 +6,7 @@ import { filePaths } from "../utils/FilePath.ts";
 import { getBidId } from "./CreateBid.ts";
 import { log } from "../utils/Logger.ts";
 import { dynamicData } from "../utils/DynamicDataGenerator.ts";
-import { productType } from "../pages/Tech_CertCalculations.ts";
+import { productType } from "./Tech_Cert_ExcelCalculations.ts";
 
 
 

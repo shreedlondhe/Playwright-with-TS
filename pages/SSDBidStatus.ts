@@ -99,15 +99,7 @@ export default class BidStatus {
         await TestUtils.click(bidToSelect, "Selecting Bid")
     }
     async confirmBid() {
-        // const bidId = getBidId();
-        // this.bidId = getBidId();
-        // const bidToSelect = this.page.locator(`//td[text()='${this.bidId}']/..//td//div//div/i[@class='dx-icon dx-icon-eyeopen']`);
-        // log(`Bid Id : ${this.bidId}`);
-        // await TestUtils.click(this.bidToSelectt, "Selecting Bid")
-        await this.selectBid();
-        await TestUtils.click(this.bidsSection, "Clicking on Bids section")
-        await TestUtils.click(this.techCert, "Clicking on Bids TechCert")
-        await TestUtils.click(this.actionSymbol, "Clicking on Bids Action Symbol")
+        this.openTechCertSection();
         await this.setMargin();
         if(this.flag==true){
              await TestUtils.click(this.saveAndDownload, "Clicking on the save And Download")
@@ -121,6 +113,15 @@ export default class BidStatus {
         }
        
     }
+
+async openTechCertSection(){
+        await this.selectBid();
+        await TestUtils.click(this.bidsSection, "Clicking on Bids section")
+        await TestUtils.click(this.techCert, "Clicking on Bids TechCert")
+        await TestUtils.click(this.actionSymbol, "Clicking on Bids Action Symbol")
+
+}
+
 async getCurrentMarginValue():Promise<number> {
      let value=await TestUtils.getText(this.margin, "Getting the margin value")
         const numericValue = value?.replace('%', '').trim();
