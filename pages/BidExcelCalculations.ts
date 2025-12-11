@@ -10,22 +10,23 @@ import { productType } from "./Tech_Cert_ExcelCalculations.ts";
 
 
 
+   
+
 export default class BidExcelCalculations {
 
+    
+constructor(private page: Page) {
 
-    constructor(private page: Page) {
+}
 
-    }
+    remarketingvalue: number = 0;
+    totalAssetCount: number = 0;
+    totalEstimateLogisticsFees: number = 0;
+    EstimateProcessingFee: number = 0;
+    netAmount: number = 0;
 
-    static remarketingvalue: number = 0;
-    static totalAssetCount: number = 0;
-    static totalEstimateLogisticsFees: number = 0;
-    static EstimateProcessingFee: number = 0;
-    static netAmount: number = 0;
-
-
-    static sheet: ExcelJS.Worksheet | undefined;
-    static async allExcelCalculation() {
+     sheet: ExcelJS.Worksheet | undefined;
+     async allExcelCalculation() {
         await this.getRemarketingValue();
         await this.getTotalAssets();
         await this.getTotalEstimateLogisticsFee();
@@ -34,7 +35,7 @@ export default class BidExcelCalculations {
 
     }
 
-    static async readExcel(sheetName: string): Promise<ExcelJS.Worksheet> {
+   async readExcel(sheetName: string): Promise<ExcelJS.Worksheet> {
         const workbook = new ExcelJS.Workbook();
         await workbook.xlsx.readFile(filePaths.filePathForEdit);
         const sheet = workbook.getWorksheet(sheetName);
@@ -44,7 +45,7 @@ export default class BidExcelCalculations {
         return sheet;
     }
 
-    static async getRemarketingValue() {
+     async getRemarketingValue() {
         //  this.remarketingvalue = 0; 
         for (let i = 3; i <= dynamicData.noOFRows; i++) {
             let dValue = this.toNumber((await this.readExcel("Product Details")).getCell(`D${i}`).value);
@@ -54,7 +55,7 @@ export default class BidExcelCalculations {
         log(`Remarketing Value is = ${this.remarketingvalue}`);
     }
 
-    static async getTotalAssets() {
+     async getTotalAssets() {
         // let total = 0;
         for (let i = 3; i <= dynamicData.noOFRows; i++) {
             this.totalAssetCount += this.toNumber((await this.readExcel("Product Details")).getCell(`D${i}`).value);
@@ -63,13 +64,13 @@ export default class BidExcelCalculations {
 
     }
 
-    static async getTotalEstimateLogisticsFee() {
+     async getTotalEstimateLogisticsFee() {
         this.totalEstimateLogisticsFees = this.toNumber((await this.readExcel("Overview")).getCell(`D19`).value);
         log(`Total Estimate Logistics Fee = ${this.totalEstimateLogisticsFees}`);
     }
 
 
-    static async getTotalEstimateServiceFee() { 
+     async getTotalEstimateServiceFee() { 
         // let EstimateServiceFee = 0;
         for (let i = 3; i <= dynamicData.noOFRows; i++) {
             let dValue = this.toNumber((await this.readExcel("Product Details")).getCell(`D${i}`).value);
@@ -81,13 +82,13 @@ export default class BidExcelCalculations {
     }
 
 
-    static async getNetAmount() {
+     async getNetAmount() {
         this.netAmount = this.remarketingvalue - this.totalEstimateLogisticsFees - this.EstimateProcessingFee
         log(`Net Amount is = ${this.netAmount}`);
 
     }
 
-    static async productCount() {
+     async productCount() {
 
         const productMap = new Map<string, number>();
         for (let i = 3; i <= dynamicData.noOFRows; i++) {
@@ -136,7 +137,7 @@ export default class BidExcelCalculations {
 
 
 
-    static toNumber(value: any): number {
+     toNumber(value: any): number {
         if (value == null) return 0;
         if (typeof value === "object") {
             if ("result" in value) {

@@ -5,6 +5,8 @@ import { filePaths } from "../utils/FilePath.ts";
 import { log } from "../utils/Logger.ts";
 import BidExcelCalculations from "./BidExcelCalculations.ts";
 import { dynamicData } from "../utils/DynamicDataGenerator.ts";
+import { Page } from "playwright-core";
+
 
 export const productType: Record<string, number> = {
     "Desktop": 5.25,
@@ -20,69 +22,77 @@ export const productType: Record<string, number> = {
     "Additional Server or Storage Drives": 0,
     "Loose Media Drive (SSD, HDD, etc.)": 0,
     "Loose Tape Drive": 0,
-   // "Multi-function Device (<22.7 kg, Printer, Copier, Scanner, Fax)": 4,
+    // "Multi-function Device (<22.7 kg, Printer, Copier, Scanner, Fax)": 4,
     "Networking (Switch, Router, Hub, UPS)": 10.25,
-   "Small Serialized Assets (<1.4 kg, any peripheral not included in other categories)": 4,
-   "Medium Assets (1.4 kg - 22.7 kg, any peripheral not included in other categories)": 10.25,
+    "Small Serialized Assets (<1.4 kg, any peripheral not included in other categories)": 4,
+    "Medium Assets (1.4 kg - 22.7 kg, any peripheral not included in other categories)": 10.25,
     "Large Assets (>=22.7 kg, any peripheral not included in other categories)": 5.25,
     "IT Spam (Cabling, Keyboards, Mice, etc.)": 5.25
 
 };
 
 export default class TechCertCalculations {
+    constructor(private page: Page) { }
 
-    static lenovoProcessingCharge = 0;
-    static grossRemarketingValue = 0;
-    static assetQTY = 0;
-    static logisticsFees = 0;
-    static processingFee = 0;
-    static standardPMOCost = 276;
-    static extraPMOCost = 23;
-    static processingUplift = 0;
-    static customerPRV = 0;
-    static Diff1 = 0;
-    static Diff2 = 0;
-    static PMOAllocation = 0;
-    static LenovoTotalRev = 0;
-    static LenovoTotalCost = 0;
-    static LenovoGP = 0;
-
-    static initializeValues() {
-
-        this.grossRemarketingValue = BidExcelCalculations.remarketingvalue;
-        this.assetQTY = BidExcelCalculations.totalAssetCount;
-        this.logisticsFees = BidExcelCalculations.totalEstimateLogisticsFees;
-        this.processingFee = BidExcelCalculations.EstimateProcessingFee;
-
-        // Calculations
-        this.processingUplift =
-            this.roundOff(this.processingFee - this.lenovoProcessingCharge);
-
-        this.customerPRV =
-            this.roundOff(this.grossRemarketingValue - (this.grossRemarketingValue * 0.10));
-
-        this.Diff1 =
-            this.roundOff(this.grossRemarketingValue - this.customerPRV);
-
-        this.Diff2 =
-            this.roundOff(this.processingFee - this.lenovoProcessingCharge);
-
-        this.PMOAllocation =
-            this.roundOff(this.standardPMOCost + this.extraPMOCost);
-
-        this.LenovoTotalRev =
-            this.roundOff(this.lenovoProcessingCharge + this.logisticsFees + this.grossRemarketingValue);
-
-        this.LenovoTotalCost =
-            this.roundOff(this.customerPRV + this.processingFee + this.logisticsFees + this.PMOAllocation);
-
-        this.LenovoGP =
-            this.roundOff(this.LenovoTotalRev - this.LenovoTotalCost); 
+    async toNumber(value: any): Promise<number> {
+        if (value == null) return 0;
+        if (typeof value === "object") {
+            if ("result" in value) {
+                return Number(value.result) || 0;
+            }
+            return 0;
+        }
+        if (typeof value === "number") {
+            return value;
+        }
+        return Number(value) || 0;
     }
 
-    static async finalTechCertCalculations() {
+    async readExcel(sheetName: string): Promise<ExcelJS.Worksheet> {
+        const workbook = new ExcelJS.Workbook();
+        await workbook.xlsx.readFile(filePaths.filePathForEdit);
+        const sheet = workbook.getWorksheet(sheetName);
+        if (!sheet) {
+            throw new Error(`Sheet ${sheetName} not found in Excel file`);
+        }
+        return sheet;
+    }
+
+
+
+    lenovoProcessingCharge = 0;
+    grossRemarketingValue = 0;
+    assetQTY = 0;
+    logisticsFees = 0;
+    processingFee = 0;
+    standardPMOCost = 276;
+    extraPMOCost = 23;
+    processingUplift = 0;
+    customerPRV = 0;
+    Diff1 = 0;
+    Diff2 = 0;
+    PMOAllocation = 0;
+    LenovoTotalRev = 0;
+    LenovoTotalCost = 0;
+    LenovoGP = 0;
+
+
+    async finalTechCertCalculations(remarketingvalue: number, totalAssetCount: number, totalEstimateLogisticsFees: number, EstimateProcessingFee: number) {
         await this.productCount()
-        await this.initializeValues();
+        this.grossRemarketingValue = remarketingvalue;
+        this.assetQTY = totalAssetCount;
+        this.logisticsFees = totalEstimateLogisticsFees;
+        this.processingFee = EstimateProcessingFee;
+
+        // Calculations
+        this.processingUplift = this.roundOff(this.processingFee - this.lenovoProcessingCharge);
+        this.customerPRV = this.roundOff(this.grossRemarketingValue - (this.grossRemarketingValue * 0.10));
+        this.Diff1 = this.roundOff(this.grossRemarketingValue - this.customerPRV);
+        this.Diff2 = this.roundOff(this.processingFee - this.lenovoProcessingCharge);
+        this.PMOAllocation = this.roundOff(this.standardPMOCost + this.extraPMOCost);
+        this.LenovoTotalRev = this.roundOff(this.lenovoProcessingCharge + this.logisticsFees + this.grossRemarketingValue);
+        this.LenovoTotalCost = this.roundOff(this.customerPRV + this.processingFee + this.logisticsFees + this.PMOAllocation);
+        this.LenovoGP = this.roundOff(this.LenovoTotalRev - this.LenovoTotalCost);
         log(`Lenovo Processing Charge: ${this.lenovoProcessingCharge}`);
         log(`Gross Remarketing Value: ${this.grossRemarketingValue}`);
         log(`Asset Quantity: ${this.assetQTY}`);
@@ -100,19 +110,19 @@ export default class TechCertCalculations {
         log(`Lenovo GP: ${this.LenovoGP}`);
     }
 
-    static roundOff(value: number): number {
+    roundOff(value: number): number {
         return Number(value.toFixed(2));
     }
-    constructor() { }
 
-    static async productCount() {
+
+    async productCount() {
 
         const productMap = new Map<string, number>();
-        for (let i = 3; i <=dynamicData.noOFRows; i++) {
-            let product: any = (await BidExcelCalculations.readExcel("Product Details")).getCell(`A${i}`).value;
-            let quantity = BidExcelCalculations.toNumber((await BidExcelCalculations.readExcel("Product Details")).getCell(`D${i}`).value);
+        for (let i = 3; i <= dynamicData.noOFRows; i++) {
+            let product: any = (await this.readExcel("Product Details")).getCell(`A${i}`).value;
+            let quantity = await this.toNumber((await this.readExcel("Product Details")).getCell(`D${i}`).value);
 
-           // if (!product || isNaN(quantity)) return;
+            // if (!product || isNaN(quantity)) return;
 
             if (productMap.has(product)) {
                 const prev = productMap.get(product) || 0;
@@ -122,16 +132,17 @@ export default class TechCertCalculations {
             }
 
         }
-      //  console.log(productMap);
+        //  console.log(productMap);
         //let totalStandardFees = 0;
         for (const [product, quantity] of productMap) {
             const stanardFees = productType[product];
             this.lenovoProcessingCharge += stanardFees * quantity;
             log(`Standard Fees for ${product} : ${stanardFees}`);
-           //  console.log(product, quantity);
+            //  console.log(product, quantity);
         }
 
 
     }
-}
 
+
+}

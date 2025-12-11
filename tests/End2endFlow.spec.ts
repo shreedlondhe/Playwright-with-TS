@@ -9,7 +9,7 @@ dotenv.config();
 
 
 
-test('Test 01 TechCert calculations', async ({ loginPage, createBid, vendorSubmission ,bidStatus,techCert_UICalculations}) => {
+test('Test 01 TechCert calculations', async ({ loginPage, createBid, vendorSubmission ,bidStatus,techCert_UICalculations,bidExcelCalculations,techCertCalculations}) => {
    await loginPage.goto();
    await loginPage.loginToApplication(process.env.email_ssd!, process.env.password!);
    await createBid.createBid();
@@ -19,28 +19,28 @@ test('Test 01 TechCert calculations', async ({ loginPage, createBid, vendorSubmi
    await createBid.logout();
    await loginPage.loginToApplication(process.env.email_ssd!, process.env.password!);
    //await ssdBidsSection_page.getData();
-   await BidExcelCalculations.allExcelCalculation();
-   await TechCertCalculations.finalTechCertCalculations();
+   await bidExcelCalculations.allExcelCalculation();
+   await techCertCalculations.finalTechCertCalculations(bidExcelCalculations.remarketingvalue, bidExcelCalculations.totalAssetCount, bidExcelCalculations.totalEstimateLogisticsFees, bidExcelCalculations.EstimateProcessingFee);
    await bidStatus.openTechCertSection();
    await techCert_UICalculations.getUIValues();
-   await TestUtils.compareNumbers(TechCertCalculations.grossRemarketingValue,techCert_UICalculations.grossRemarketingValue);
-   await TestUtils.compareNumbers(TechCertCalculations.logisticsFees,techCert_UICalculations.logisticsFees);
-   await TestUtils.compareNumbers(TechCertCalculations.processingFee,techCert_UICalculations.processingFee);
-   await TestUtils.compareNumbers(TechCertCalculations.assetQTY,techCert_UICalculations.assetQTY);
-   await TestUtils.compareNumbers(TechCertCalculations.lenovoProcessingCharge,techCert_UICalculations.lenovoProcessingCharge);
-   await TestUtils.compareNumbers(TechCertCalculations.processingUplift,techCert_UICalculations.processingUplift);
-   await TestUtils.compareNumbers(TechCertCalculations.Diff1,techCert_UICalculations.diff1);
-   await TestUtils.compareNumbers(TechCertCalculations.Diff2,techCert_UICalculations.diff2);
-   await TestUtils.compareNumbers(TechCertCalculations.PMOAllocation,techCert_UICalculations.pmoAllocation);
-   await TestUtils.compareNumbers(TechCertCalculations.LenovoTotalRev,techCert_UICalculations.lenovoTotalRev);
-   await TestUtils.compareNumbers(TechCertCalculations.LenovoTotalCost,techCert_UICalculations.lenovoTotalCost);
-   await TestUtils.compareNumbers(TechCertCalculations.LenovoGP,techCert_UICalculations.lenovoGP);
+   await TestUtils.compareNumbers(techCert_UICalculations.grossRemarketingValue,techCert_UICalculations.grossRemarketingValue);
+   await TestUtils.compareNumbers(techCert_UICalculations.logisticsFees,techCert_UICalculations.logisticsFees);
+   await TestUtils.compareNumbers(techCert_UICalculations.processingFee,techCert_UICalculations.processingFee);
+   await TestUtils.compareNumbers(techCert_UICalculations.assetQTY,techCert_UICalculations.assetQTY);
+   await TestUtils.compareNumbers(techCert_UICalculations.lenovoProcessingCharge,techCert_UICalculations.lenovoProcessingCharge);
+   await TestUtils.compareNumbers(techCert_UICalculations.processingUplift,techCert_UICalculations.processingUplift);
+   await TestUtils.compareNumbers(techCert_UICalculations.diff1,techCert_UICalculations.diff1);
+   await TestUtils.compareNumbers(techCert_UICalculations.diff2,techCert_UICalculations.diff2);
+   await TestUtils.compareNumbers(techCert_UICalculations.pmoAllocation,techCert_UICalculations.pmoAllocation);
+   await TestUtils.compareNumbers(techCert_UICalculations.lenovoTotalRev,techCert_UICalculations.lenovoTotalRev);
+   await TestUtils.compareNumbers(techCert_UICalculations.lenovoTotalCost,techCert_UICalculations.lenovoTotalCost);
+   await TestUtils.compareNumbers(techCert_UICalculations.lenovoGP,techCert_UICalculations.lenovoGP);
 
 
    
 })
 
-test('Test 02 Verifying SSD Bids tab calculations', async ({ loginPage, createBid, vendorSubmission ,ssdBidsSection_page}) => {
+test('Test 02 Verifying SSD Bids tab calculations', async ({ techCertCalculations,loginPage, createBid, vendorSubmission ,ssdBidsSection_page,bidExcelCalculations}) => {
    await loginPage.goto();
    await loginPage.loginToApplication(process.env.email_ssd!, process.env.password!);
    await createBid.createBid();
@@ -50,13 +50,13 @@ test('Test 02 Verifying SSD Bids tab calculations', async ({ loginPage, createBi
    await createBid.logout();
    await loginPage.loginToApplication(process.env.email_ssd!, process.env.password!);
    await ssdBidsSection_page.getData();
-   await BidExcelCalculations.allExcelCalculation();
-   await TestUtils.compareNumbers(BidExcelCalculations.totalAssetCount,ssdBidsSection_page.grandTotalData);
-   await TestUtils.compareNumbers(BidExcelCalculations.remarketingvalue,ssdBidsSection_page.remarketingValueData);
-   await TestUtils.compareNumbers(BidExcelCalculations.totalEstimateLogisticsFees,ssdBidsSection_page.logisticsFeesData);
-   await TestUtils.compareNumbers(BidExcelCalculations.EstimateProcessingFee,ssdBidsSection_page.processingFeesData);
-   await TestUtils.compareNumbers(BidExcelCalculations.netAmount,ssdBidsSection_page.netAmountData);
-   await TechCertCalculations.productCount();
+   await bidExcelCalculations.allExcelCalculation();
+   await TestUtils.compareNumbers(bidExcelCalculations.totalAssetCount,ssdBidsSection_page.grandTotalData);
+   await TestUtils.compareNumbers(bidExcelCalculations.remarketingvalue,ssdBidsSection_page.remarketingValueData);
+   await TestUtils.compareNumbers(bidExcelCalculations.totalEstimateLogisticsFees,ssdBidsSection_page.logisticsFeesData);
+   await TestUtils.compareNumbers(bidExcelCalculations.EstimateProcessingFee,ssdBidsSection_page.processingFeesData);
+   await TestUtils.compareNumbers(bidExcelCalculations.netAmount,ssdBidsSection_page.netAmountData);
+   await techCertCalculations.productCount();
    
 })
 
@@ -158,5 +158,5 @@ test.afterEach(async ({ page },testInfo) => {
   } catch (err) {
     console.error("Error attaching trace:", err);
   }
-   page.close();
+   await page.close();
 });
