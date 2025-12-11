@@ -149,8 +149,10 @@ async getCurrentMarginValue():Promise<number> {
                 await TestUtils.sleep(1000)
                  value=await this.getCurrentMarginValue();
                 increaseValue+=5;
-                if(increaseValue>90){
-
+                if(increaseValue>60){
+                    this.flag=false;
+                    log('Margin is in negative range even after increasing, breaking the loop');
+                    break;
                 }
             }
             if(value < 50 && value > 20){
