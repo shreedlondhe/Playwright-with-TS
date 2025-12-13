@@ -1,7 +1,7 @@
 import { test as base } from '@playwright/test';
 import LoginPage from '../pages/LoginPage';
 import CreateBid from '../pages/CreateBid';
-import BidStatus from '../pages/SSDBidStatus';
+import BidStatus from '../pages/SSDBidStatus.ts';
 import VendorSubmission from '../pages/VendorSubmission';
 //import VendorBidStatus from 'C:/Users/Admin/Downloads/PyxTech/pages/VendorBidStatus.ts';
 import VendorBidStatus from '../pages/VendorBidStatus.ts';
@@ -11,9 +11,11 @@ import BidExcelCalculations from '../pages/BidExcelCalculations.ts'
 import { log } from '../utils/Logger';
 import TechCert_UICalculations from '../pages/Tech_Cert_UICalculations.ts';
 import TechCertCalculations from '../pages/Tech_Cert_ExcelCalculations.ts';
+import SsdSummeryTab from '../pages/SsdSummeryTab.ts';
 
 
-export const test = base.extend<{ loginPage: LoginPage, createBid: CreateBid , vendorSubmission: VendorSubmission,bidStatus:BidStatus,vendorBidStatus:VendorBidStatus,ssdBidsSection_page:SsdBidsSection_page,bidExcelCalculations:BidExcelCalculations,techCert_UICalculations:TechCert_UICalculations,techCertCalculations:TechCertCalculations}>({
+export const test = base.extend<{ loginPage: LoginPage, createBid: CreateBid , vendorSubmission: VendorSubmission,bidStatus:BidStatus,vendorBidStatus:VendorBidStatus,ssdBidsSection_page:SsdBidsSection_page,bidExcelCalculations:BidExcelCalculations,
+  techCert_UICalculations:TechCert_UICalculations,techCertCalculations:TechCertCalculations,ssdSummeryTab:SsdSummeryTab}>({
   loginPage: async ({ page }, use) => {
    
     await use(new LoginPage(page));
@@ -50,6 +52,11 @@ export const test = base.extend<{ loginPage: LoginPage, createBid: CreateBid , v
     await use(new TechCertCalculations(page));
 
   },
+  ssdSummeryTab: async ({ page }, use) => {
+    await use(new SsdSummeryTab(page));
+
+  },
+   
    
 });
 

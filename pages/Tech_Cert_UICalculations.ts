@@ -12,7 +12,6 @@ import TechCertCalculations from "./Tech_Cert_ExcelCalculations.ts";
 
 
 
-
 export default class TechCert_UICalculations {
 
     GrossRemarketingValue: Locator;
@@ -27,6 +26,7 @@ export default class TechCert_UICalculations {
     LenovoTotalRev: Locator;
     LenovoTotalCost: Locator;
     LenovoGP: Locator;
+
     grossRemarketingValue: number = 0;
     logisticsFees: number = 0;
     processingFee: number = 0;
@@ -36,10 +36,11 @@ export default class TechCert_UICalculations {
     diff1: number = 0;
     diff2: number = 0;
     pmoAllocation: number = 0;
-    lenovoTotalRev: number = 0;
+    lenovoTotalRev: number = 0; 
     lenovoTotalCost: number = 0;
     lenovoGP: number = 0;
     
+
 constructor(private page: Page) {
     this.GrossRemarketingValue = page.locator("//span[text()='Gross Remarketing Value:']/../../following-sibling::div//span");
     this.LogisticsFees = page.locator("//span[text()='Logistics Fee:']/../../following-sibling::div//span");
@@ -83,6 +84,8 @@ async getUIValues(): Promise<void> {
                 log(`Lenovo GP: ${this.lenovoGP}`);
 
 }
+
+
  async convertCurrencyToNumber(value: string): Promise<number> {
             if (!value) return 0;
             const cleaned = value

@@ -8,6 +8,7 @@ import { log } from "../utils/Logger.ts";
 import { dynamicData } from "../utils/DynamicDataGenerator.ts";
 import BidExcelCalculations from "./BidExcelCalculations.ts"
 import TechCertCalculations from "./Tech_Cert_ExcelCalculations.ts";
+import SsdSummeryTab from "./SsdSummeryTab.ts";
 
 export default class VendorSubmission {
   AssetListSection: Locator;
@@ -24,17 +25,17 @@ constructor(private page: Page) {
  }
 
 async selectBid(){
- const bidId = getBidId();
+ const bidId = await getBidId();
     const bidToSelect = this.page.locator(`//div[@class='app-bid-history-grid mt-2']//td[.='${bidId}']/..//dx-button[@icon='eyeopen']`);
     log(`Bid Id : ${bidId}`);
     await TestUtils.click(bidToSelect, `Clicking on Bid ` + bidId);
 }
 
 async submitBid() {
-   await this.selectBid();
+    await this.selectBid();
     await TestUtils.click(this.AssetListSection, 'Clicking on Asset List section');
     filePaths.filePathForEdit = await TestUtils.downLoadFile(this.page, this.downloadBid, filePaths.downloadPath);
-   await this.fillBidData();
+    await this.fillBidData();
     const uploadDownloadedBid = path.resolve(filePaths.filePathForEdit);
     await TestUtils.fileUpload(this.page, this.UploadBid, uploadDownloadedBid, 'Uploading file');
     await TestUtils.click(this.okButton, 'Clicking on OK button');
@@ -44,6 +45,8 @@ async submitBid() {
     log(`Extracted Message After clicking On submit is : "${message}"`);
     await TestUtils.click(this.okButton, 'Clicking on OK button'); 
     //await TechCertCalculations.productCount();
+    
+     
    
   }
     

@@ -53,7 +53,6 @@ export default class CreateBid {
     await TestUtils.click(this.selectBusinessUnit, 'Clicking on Select Business Unit');
     await TestUtils.click(this.selectIDG, 'Clicking on Select IDG');
     const [apiResponse] = await TestUtils.handleAPIResponse(this.page, '/apis/bid-request/submit', 201, this.submit, 'Clicking on Submit Bid Request');
-    await TestUtils.getScreenshot(this.page, 'Taking screenshot after submitting bid request');
     const json = await apiResponse.json();
     bidId = 6000 + json.result.bidId;
     log(`Bid ID: ${bidId}`);
