@@ -31,6 +31,10 @@ export class dynamicData {
     sheet2.getCell("D8").value = TestUtils.getAddress();
     sheet2.getCell("D9").value = "Singapore";
     sheet2.getCell("D10").value = "2026/12/12";
+    sheet2.getCell("D12").value = (await TestUtils.readExcelAndGetData('Overview Data', filePaths.masterSheet)).getCell(`A${TestUtils.getRandomInRange(3, 6)}`).value
+    sheet2.getCell("D13").value = (await TestUtils.readExcelAndGetData('Overview Data', filePaths.masterSheet)).getCell(`B${TestUtils.getRandomInRange(3, 8)}`).value
+    sheet2.getCell("D14").value = (await TestUtils.readExcelAndGetData('Overview Data', filePaths.masterSheet)).getCell(`C${TestUtils.getRandomInRange(3, 9)}`).value
+    sheet2.getCell("D15").value = (await TestUtils.readExcelAndGetData('Overview Data', filePaths.masterSheet)).getCell(`C${TestUtils.getRandomInRange(3, 9)}`).value
     sheet2.getCell("D16").value = TestUtils.getStatement();
 
     for (let i = 0; i < this.columns.length; i++) {

@@ -78,13 +78,11 @@ export default class TechCertCalculations {
 
 
     async finalTechCertCalculations(remarketingvalue: number, totalAssetCount: number, totalEstimateLogisticsFees: number, EstimateProcessingFee: number) {
-        await this.productCount()
+        await this.productCount();
         this.grossRemarketingValue = remarketingvalue;
         this.assetQTY = totalAssetCount;
         this.logisticsFees = totalEstimateLogisticsFees;
         this.processingFee = EstimateProcessingFee;
-
-        // Calculations
         this.processingUplift = this.roundOff(this.processingFee - this.lenovoProcessingCharge);
         this.customerPRV = this.roundOff(this.grossRemarketingValue - (this.grossRemarketingValue * 0.10));
         this.Diff1 = this.roundOff(this.grossRemarketingValue - this.customerPRV);

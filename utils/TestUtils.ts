@@ -221,17 +221,42 @@ export default class TestUtils {
 
   // API RESPONSE -----------------------------------------------------------
 
-  static async handleAPIResponse(page: Page, urlPart: string, statusCode: number, clickLocator: Locator, clickLogMsg: string,uiDoneSelector?: Locator ): Promise<any> {
-  const [apiResponse] = await Promise.all([
-    page.waitForResponse(async res => 
-      res.url().includes(urlPart) && res.status() === statusCode
-    ),
+//   static async handleAPIResponse(page: Page, urlPart: string, statusCode: number, clickLocator: Locator, clickLogMsg: string,uiDoneSelector?: Locator ): Promise<any> {
+//   const [apiResponse] = await Promise.all([
+//     page.waitForResponse(async res => 
+//       res.url().includes(urlPart) && res.status() === statusCode
+//     ),
     
+//     TestUtils.click(clickLocator, clickLogMsg)
+//   ]);
+
+//   return [apiResponse];
+// }
+
+static async handleAPIResponse(page: Page,urlPart: string,expectedStatusCode: number,clickLocator: Locator,clickLogMsg: string,methodType: string = "POST"): Promise<any> {
+ const [apiResponse] = await Promise.all([
+    page.waitForResponse(res => {
+      const matchesUrl = res.url().includes(urlPart);
+      const matchesMethod = methodType
+        ? res.request().method().toUpperCase() === methodType.toUpperCase()
+        : true;
+        return matchesUrl && matchesMethod;
+    }),
     TestUtils.click(clickLocator, clickLogMsg)
   ]);
-
+  const actualMethod = apiResponse.request().method();
+  if (actualMethod.toUpperCase() !== methodType.toUpperCase())
+     {throw new Error(`API Method Mismatch Expected Method: ${methodType} Actual Method: ${actualMethod} URL: ${apiResponse.url()}`);
+  }
+  const actualStatus = apiResponse.status();
+  if (actualStatus !== expectedStatusCode) {
+    const responseText = await apiResponse.text().catch(() => "Unable to read body");
+throw new Error(`API Status Code Mismatch Expected Status: ${expectedStatusCode} Actual Status: ${actualStatus} URL: ${apiResponse.url()} Method: ${actualMethod} Response Body: ${responseText}`);
+  }
   return [apiResponse];
 }
+
+
   // RANDOM -----------------------------------------------------------------
 
   static getRandomInRange(min: number, max: number): number {
@@ -309,14 +334,21 @@ static async expectVisible(locator: Locator, logMsg: string): Promise<void> {
 
 static async getText(locator: Locator, logMsg: string): Promise<string> {
   await locator.waitFor({ state: "visible" });
-  const text = (await locator.innerText())?.trim();
+  const text = (await locator.innerText())?.trim(); 
   log(logMsg);
   return text;
+}
+
+static async expectStringEquals(actual: string | null | undefined,expected: string,logMsg: string): Promise<void> {
+ const actualValue = actual ?? ""; // handle null / undefined safely
+  expect(actualValue).toBe(expected);
+  log(logMsg);
 }
 
 static async compareNumbers(num1: number, num2: number) {
   const positiveNum1 = Math.abs(num1);
   const positiveNum2 = Math.abs(num2);
+
   expect(positiveNum1).toBe(positiveNum2);
 }
 
@@ -331,3 +363,4 @@ static async compareNumbers(num1: number, num2: number) {
       }
 
 }
+ 

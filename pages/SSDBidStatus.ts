@@ -68,7 +68,6 @@ export default class BidStatus {
 
 
     constructor(private page: Page) {
-
         this.bidsSection = page.getByText('BidsBids')
         this.techCert = page.getByRole('button', { name: 'Tech Cert' })
         this.actionSymbol = page.getByRole('button', { name: 'preferences' })
@@ -93,16 +92,16 @@ export default class BidStatus {
 
     bidId: string = "";
     async selectBid() {
-        this.bidId = getBidId();
+        this.bidId =await getBidId();
         const bidToSelect = this.page.locator(`//td[text()='${this.bidId}']/..//td//div//div/i[@class='dx-icon dx-icon-eyeopen']`);
         log(`Bid Id : ${this.bidId}`);
         await TestUtils.click(bidToSelect, "Selecting Bid")
     }
     async confirmBid() {
-        this.openTechCertSection();
+        await this.openTechCertSection();
         await this.setMargin();
         if(this.flag==true){
-             await TestUtils.click(this.saveAndDownload, "Clicking on the save And Download")
+        await TestUtils.click(this.saveAndDownload, "Clicking on the save And Download")
         await TestUtils.click(this.confirm, "Clicking on the confirm")
         await TestUtils.click(this.save, "Clicking on this save")
         await TestUtils.click(this.ok, "Clicking on Ok")
