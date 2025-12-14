@@ -1,0 +1,40 @@
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] URL: https://lenovo-qa-pyxquote.pyxtech.com/
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Filling username
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Filling password
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking on login button
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking on Create Bid button
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Started Editing Inventory file
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Completed Editing Inventory file
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking on Vendor dropdown
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking on Select All Vendors
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking on Select Business Unit
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking on Select IDG
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking on Submit Bid Request
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Taking screenshot after submitting bid request
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Bid ID:" 6860
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking on OK button
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking on SSD Logo to open user menu
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking on Logout button
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Taking screenshot after logout
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Filling username
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Filling password
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking on login button
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Bid Id : 6860
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking on Bid 6860
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking on Asset List section
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking download button
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Downloaded file saved at: C:\Users\Admin\Downloads\VendorDownloads/6860_Bid_Form.xlsx
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Excel updated → Sheet: Overview, Cell: D19, Value: 500
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Excel updated → Sheet: Product Details, Cell: P3, Value: 65
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Excel updated → Sheet: Product Details, Cell: P4, Value: 65
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Excel updated → Sheet: Product Details, Cell: Q3, Value: 566
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Excel updated → Sheet: Product Details, Cell: Q4, Value: 6565
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Uploading file: C:\Users\Admin\Downloads\VendorDownloads\6860_Bid_Form.xlsx
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Uploading file
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking on OK button
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking on Submit Bid
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Extracted Message After clicking On submit is : "bid created successfully."
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking on OK button
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking on SSD Logo to open user menu
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Clicking on Logout button
+[PyxTech Lenovo] [INFO] [2025-12-07 14:47:02] Taking screenshot after logout

@@ -1,0 +1,17 @@
+[PyxTech Lenovo] [INFO] [2025-12-03 17:49:07] URL: https://lenovo-qa-pyxquote.pyxtech.com/
+[PyxTech Lenovo] [INFO] [2025-12-03 17:49:07] Filling username
+[PyxTech Lenovo] [INFO] [2025-12-03 17:49:07] Filling password
+[PyxTech Lenovo] [INFO] [2025-12-03 17:49:07] Clicking on login button
+[PyxTech Lenovo] [INFO] [2025-12-03 17:49:07] Clicking on Create Bid button
+[PyxTech Lenovo] [INFO] [2025-12-03 17:49:07] Clicking on Vendor dropdown
+[PyxTech Lenovo] [INFO] [2025-12-03 17:49:07] Clicking on Select All Vendors
+[PyxTech Lenovo] [INFO] [2025-12-03 17:49:07] Clicking on Select Business Unit
+[PyxTech Lenovo] [INFO] [2025-12-03 17:49:07] Clicking on Select IDG
+[PyxTech Lenovo] [INFO] [2025-12-03 17:49:07] Clicking on Submit Bid Request
+[PyxTech Lenovo] [INFO] [2025-12-03 17:49:07] Taking screenshot after submitting bid request
+Bid ID: 6581
+Message: bid request created successfully.
+[PyxTech Lenovo] [INFO] [2025-12-03 17:49:07] Clicking on OK button
+[PyxTech Lenovo] [INFO] [2025-12-03 17:49:07] Clicking on SSD Logo to open user menu
+[PyxTech Lenovo] [INFO] [2025-12-03 17:49:07] Clicking on Logout button
+[PyxTech Lenovo] [INFO] [2025-12-03 17:49:07] Taking screenshot after logout

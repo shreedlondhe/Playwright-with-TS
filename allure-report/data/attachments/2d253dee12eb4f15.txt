@@ -1,0 +1,6 @@
+[PyxTech Lenovo] [INFO] [2025-12-03 04:47:56] URL: https://lenovo-qa-pyxquote.pyxtech.com/
+[PyxTech Lenovo] [INFO] [2025-12-03 04:47:56] Filling username
+[PyxTech Lenovo] [INFO] [2025-12-03 04:47:56] Filling password
+[PyxTech Lenovo] [INFO] [2025-12-03 04:47:56] Clicking on login button
+[PyxTech Lenovo] [INFO] [2025-12-03 04:47:56] Clicking on Create Bid button
+[PyxTech Lenovo] [INFO] [2025-12-03 04:47:56] Clicking on Download button

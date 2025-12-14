@@ -1,0 +1,516 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - toolbar [ref=e7]:
+    - generic [ref=e8]:
+      - button "Collapse / Expand Side Navigation" [ref=e11] [cursor=pointer]:
+        - generic [ref=e13]: 
+      - button "PyxTech PyxQuote Webapp" [ref=e16] [cursor=pointer]:
+        - img "PyxTech PyxQuote Webapp" [ref=e18]
+      - generic [ref=e20]: v1.0
+      - generic [ref=e28] [cursor=pointer]:
+        - generic [ref=e29]:
+          - combobox "SelectLang" [ref=e30]: English
+          - text: SelectLang
+        - button "Select" [ref=e32]:
+          - generic [ref=e34]: 
+      - generic "Vikas Mahajan" [ref=e37]:
+        - group [ref=e38]:
+          - button "Vikas Mahajan" [ref=e40] [cursor=pointer]:
+            - generic [ref=e41]:
+              - generic [ref=e42]:
+                - generic [ref=e43]: Vikas Mahajan
+                - generic [ref=e44]: (SSD)
+              - generic [ref=e45]: 
+  - generic [ref=e52]:
+    - tree [ref=e58]:
+      - group [ref=e63]:
+        - treeitem "Home" [expanded] [level=1] [selected] [ref=e64]:
+          - generic "Home" [ref=e66] [cursor=pointer]:
+            - generic [ref=e68]: 
+            - generic [ref=e69]: Home
+          - group
+        - treeitem "Dashboard" [level=1] [ref=e70]:
+          - generic "Dashboard" [ref=e72] [cursor=pointer]:
+            - generic [ref=e74]: 
+            - generic [ref=e75]: Dashboard
+        - treeitem "Report" [level=1] [ref=e76]:
+          - generic "Report" [ref=e78] [cursor=pointer]:
+            - generic [ref=e80]: 
+            - generic [ref=e81]: Report
+    - generic [ref=e87]:
+      - tablist [ref=e89]:
+        - tab " Bid Configuration" [selected] [ref=e91]:
+          - generic [ref=e92] [cursor=pointer]:  Bid Configuration
+          - form [ref=e96]:
+            - generic [ref=e99]:
+              - generic [ref=e107]:
+                - generic [ref=e109]:
+                  - generic [ref=e110]: Drag and Drop the Asset List File Here
+                  - generic [ref=e111]: "---------OR ---------"
+                  - button "Choose File" [ref=e118] [cursor=pointer]:
+                    - generic [ref=e119]: Choose File
+                  - generic [ref=e120]: Upload a single Excel file with the asset list, maximum size 50 MB.
+                - heading "Uploaded Files" [level=5] [ref=e124]
+              - group [ref=e129]:
+                - generic [ref=e133]:
+                  - generic [ref=e135]:
+                    - generic [ref=e138]:
+                      - generic [ref=e140]: "Region: *"
+                      - generic [ref=e145] [cursor=pointer]:
+                        - generic [ref=e146]:
+                          - combobox "Select Region" [ref=e147]
+                          - generic: Select Region
+                        - button "Select" [ref=e149]:
+                          - generic [ref=e151]: 
+                    - generic [ref=e154]:
+                      - generic [ref=e156]: "Country: *"
+                      - generic [ref=e158]:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - combobox "Country" [disabled]
+                                - generic: Country
+                              - generic:
+                                - button "Select":
+                                  - generic:
+                                    - generic: 
+                    - generic [ref=e161]:
+                      - generic [ref=e163]: "Vendor: *"
+                      - application [ref=e166] [cursor=pointer]:
+                        - generic [ref=e169]:
+                          - combobox "Vendor" [ref=e170]
+                          - generic: Vendor
+                  - generic [ref=e172]:
+                    - generic [ref=e175]:
+                      - generic [ref=e177]: "Currency: *"
+                      - generic [ref=e182] [cursor=pointer]:
+                        - generic [ref=e183]:
+                          - combobox "Currency" [ref=e184]
+                          - generic: Currency
+                        - button "Select" [ref=e186]:
+                          - generic [ref=e188]: 
+                    - generic [ref=e191]:
+                      - generic [ref=e193]: "SLA: *"
+                      - generic [ref=e198] [cursor=pointer]:
+                        - generic [ref=e199]:
+                          - combobox "SLA" [ref=e200]: 3 BD
+                          - text: SLA
+                        - button "Select" [ref=e202]:
+                          - generic [ref=e204]: 
+                    - generic [ref=e207]:
+                      - generic [ref=e209]: "Customer Name: *"
+                      - generic [ref=e213]:
+                        - generic [ref=e214]:
+                          - textbox "Customer Name" [ref=e215]
+                          - generic: Customer Name
+                        - generic: 
+                  - generic [ref=e217]:
+                    - generic [ref=e220]:
+                      - generic [ref=e222]: "Collection Address:"
+                      - generic [ref=e226]:
+                        - generic [ref=e227]:
+                          - textbox "Enter Collection address" [ref=e228]
+                          - generic: Enter Collection address
+                        - generic: 
+                    - generic [ref=e231]:
+                      - generic [ref=e233]: "Collection Date: *"
+                      - generic [ref=e238]:
+                        - generic [ref=e239]:
+                          - combobox "Select Collection date" [ref=e240]
+                          - generic: Select Collection date
+                        - generic [ref=e241]:
+                          - text: 
+                          - button "Select" [ref=e242] [cursor=pointer]:
+                            - generic [ref=e244]: 
+                    - generic [ref=e247]:
+                      - generic [ref=e249]: "Logistics Service Type: *"
+                      - generic [ref=e254] [cursor=pointer]:
+                        - generic [ref=e255]:
+                          - combobox "Enter Logistics service type" [ref=e256]
+                          - generic: Enter Logistics service type
+                        - button "Select" [ref=e258]:
+                          - generic [ref=e260]: 
+                  - generic [ref=e262]:
+                    - generic [ref=e265]:
+                      - generic [ref=e267]: "Data Security Type: *"
+                      - generic [ref=e272] [cursor=pointer]:
+                        - generic [ref=e273]:
+                          - combobox "Enter Data security type" [ref=e274]: Offsite Data Wipe
+                          - text: Enter Data security type
+                        - button "Select" [ref=e276]:
+                          - generic [ref=e278]: 
+                    - generic [ref=e281]:
+                      - generic [ref=e283]: "Special Services Request:"
+                      - application [ref=e286] [cursor=pointer]:
+                        - generic [ref=e288]:
+                          - generic [ref=e289]:
+                            - combobox "Enter Special services request" [ref=e290]
+                            - generic: Enter Special services request
+                          - button "Select" [ref=e292]:
+                            - generic [ref=e294]: 
+                    - generic [ref=e297]:
+                      - generic [ref=e299]: "Business Unit: *"
+                      - generic [ref=e304] [cursor=pointer]:
+                        - generic [ref=e305]:
+                          - combobox "Select Business Unit" [ref=e306]
+                          - generic: Select Business Unit
+                        - button "Select" [ref=e308]:
+                          - generic [ref=e310]: 
+              - generic [ref=e313]:
+                - generic [ref=e315]: "Provide Additional Notes To Vendors:"
+                - generic [ref=e320]:
+                  - textbox "Provide Additional Notes To Vendors" [ref=e321]
+                  - generic: Provide Additional Notes To Vendors
+              - button "Download Template" [active] [ref=e328] [cursor=pointer]:
+                - generic [ref=e330]: Download Template
+              - generic [ref=e336]:
+                - generic [ref=e337]:
+                  - toolbar [ref=e340]:
+                    - strong [ref=e344]: Upload Files
+                  - text: 
+                - heading [level=1] [ref=e345]
+              - generic [ref=e353]:
+                - generic [ref=e355]:
+                  - generic [ref=e356]: Drag and Drop Additional File(s) Here
+                  - generic [ref=e357]: "---------OR ---------"
+                  - button "Choose File" [ref=e363] [cursor=pointer]:
+                    - generic [ref=e364]: Choose File
+                  - generic [ref=e365]: "You can upload multiple files in the following formats: .jpg, .jpeg, .png, .tiff, .pdf, .docx, .doc, .xls, .xlsx, .txt, .csv, .tsv — up to 50 MB each"
+                - heading "Uploaded Files" [level=5] [ref=e369]
+              - generic [ref=e375]:
+                - button "Save Bid As Draft" [ref=e376] [cursor=pointer]:
+                  - generic [ref=e378]: Save Bid As Draft
+                - button "Submit Bid Request" [ref=e379] [cursor=pointer]:
+                  - generic [ref=e381]: Submit Bid Request
+      - generic [ref=e384]:
+        - generic [ref=e385]:
+          - generic [ref=e386]:
+            - toolbar [ref=e389]:
+              - strong [ref=e393]: All Bid Requests
+            - button "Reset" [ref=e396] [cursor=pointer]:
+              - generic [ref=e397]:
+                - generic [ref=e398]: 
+                - generic [ref=e399]: Reset
+            - button "Download" [ref=e402] [cursor=pointer]:
+              - generic [ref=e404]: Download
+          - heading [level=1] [ref=e405]
+        - group "Data grid with 501 rows and 10 columns" [ref=e406]:
+          - status [ref=e407]: Data grid with 501 rows and 10 columns
+          - 'row "Column Bid Request Id Column Customer Name Column Start Date Column End Date Column Status Column Region Column Country Column #Bid(s) Requested Column #Bid(s) Received Column Actions" [ref=e420]':
+            - columnheader "Column Bid Request Id" [ref=e421] [cursor=pointer]:
+              - text: Bid Request Id
+              - button "Show filter options for column 'Bid Request Id'" [ref=e422]: 
+            - columnheader "Column Customer Name" [ref=e423] [cursor=pointer]:
+              - text: Customer Name
+              - button "Show filter options for column 'Customer Name'" [ref=e424]: 
+            - columnheader "Column Start Date" [ref=e425] [cursor=pointer]:
+              - text: Start Date
+              - button "Show filter options for column 'Start Date'" [ref=e426]: 
+            - columnheader "Column End Date" [ref=e427] [cursor=pointer]:
+              - text: End Date
+              - button "Show filter options for column 'End Date'" [ref=e428]: 
+            - columnheader "Column Status" [ref=e429] [cursor=pointer]:
+              - text: Status
+              - button "Show filter options for column 'Status'" [ref=e430]: 
+            - columnheader "Column Region" [ref=e431] [cursor=pointer]:
+              - text: Region
+              - button "Show filter options for column 'Region'" [ref=e432]: 
+            - columnheader "Column Country" [ref=e433] [cursor=pointer]:
+              - text: Country
+              - button "Show filter options for column 'Country'" [ref=e434]: 
+            - 'columnheader "Column #Bid(s) Requested" [ref=e435] [cursor=pointer]':
+              - text: "#Bid(s) Requested"
+              - button "Show filter options for column '#Bid(s) Requested'" [ref=e436]: 
+            - 'columnheader "Column #Bid(s) Received" [ref=e437] [cursor=pointer]':
+              - text: "#Bid(s) Received"
+              - button "Show filter options for column '#Bid(s) Received'" [ref=e438]: 
+            - columnheader "Column Actions" [ref=e439]: Actions
+          - row "Filter cell Filter cell Filter cell Filter cell Filter cell Filter cell Filter cell Filter cell Filter cell" [ref=e440]:
+            - gridcell "Filter cell" [ref=e441]:
+              - generic [ref=e442]:
+                - menubar [ref=e443] [cursor=pointer]:
+                  - menuitem "Search box" [ref=e445]:
+                    - generic [ref=e446]:
+                      - generic [ref=e447]: 
+                      - text: 
+                - textbox "Filter cell" [ref=e452]
+            - gridcell "Filter cell" [ref=e453]:
+              - generic [ref=e454]:
+                - menubar [ref=e455] [cursor=pointer]:
+                  - menuitem "Search box" [ref=e457]:
+                    - generic [ref=e458]:
+                      - generic [ref=e459]: 
+                      - text: 
+                - textbox "Filter cell" [ref=e464]
+            - gridcell "Filter cell" [ref=e465]:
+              - generic [ref=e466]:
+                - menubar [ref=e467] [cursor=pointer]:
+                  - menuitem "Search box" [ref=e469]:
+                    - generic [ref=e470]:
+                      - generic [ref=e471]: 
+                      - text: 
+                - generic [ref=e475]:
+                  - combobox "Filter cell" [ref=e477]
+                  - button "Select" [ref=e479] [cursor=pointer]:
+                    - generic [ref=e481]: 
+            - gridcell "Filter cell" [ref=e482]:
+              - generic [ref=e483]:
+                - menubar [ref=e484] [cursor=pointer]:
+                  - menuitem "Search box" [ref=e486]:
+                    - generic [ref=e487]:
+                      - generic [ref=e488]: 
+                      - text: 
+                - generic [ref=e492]:
+                  - combobox "Filter cell" [ref=e494]
+                  - button "Select" [ref=e496] [cursor=pointer]:
+                    - generic [ref=e498]: 
+            - gridcell "Filter cell" [ref=e499]:
+              - generic [ref=e500]:
+                - menubar [ref=e501] [cursor=pointer]:
+                  - menuitem "Search box" [ref=e503]:
+                    - generic [ref=e504]:
+                      - generic [ref=e505]: 
+                      - text: 
+                - textbox "Filter cell" [ref=e510]
+            - gridcell "Filter cell" [ref=e511]:
+              - generic [ref=e512]:
+                - menubar [ref=e513] [cursor=pointer]:
+                  - menuitem "Search box" [ref=e515]:
+                    - generic [ref=e516]:
+                      - generic [ref=e517]: 
+                      - text: 
+                - textbox "Filter cell" [ref=e522]
+            - gridcell "Filter cell" [ref=e523]:
+              - generic [ref=e524]:
+                - menubar [ref=e525] [cursor=pointer]:
+                  - menuitem "Search box" [ref=e527]:
+                    - generic [ref=e528]:
+                      - generic [ref=e529]: 
+                      - text: 
+                - textbox "Filter cell" [ref=e534]
+            - gridcell "Filter cell" [ref=e535]:
+              - generic [ref=e536]:
+                - menubar [ref=e537] [cursor=pointer]:
+                  - menuitem "Search box" [ref=e539]:
+                    - generic [ref=e540]:
+                      - generic [ref=e541]: 
+                      - text: 
+                - spinbutton "Filter cell" [ref=e546]
+            - gridcell "Filter cell" [ref=e547]:
+              - generic [ref=e548]:
+                - menubar [ref=e549] [cursor=pointer]:
+                  - menuitem "Search box" [ref=e551]:
+                    - generic [ref=e552]:
+                      - generic [ref=e553]: 
+                      - text: 
+                - spinbutton "Filter cell" [ref=e558]
+            - gridcell [ref=e559]
+          - grid [ref=e563]:
+            - row "6596 Colleen Nitzsche MD 12/04/2025 03:39:27 12/09/2025 03:39:27 In Progress APAC Singapore 11 Vendor(s) 0 Vendor(s) eyeopen download edit" [ref=e575]:
+              - gridcell "6596" [ref=e576]
+              - gridcell "Colleen Nitzsche MD" [ref=e577]
+              - gridcell "12/04/2025 03:39:27" [ref=e578]
+              - gridcell "12/09/2025 03:39:27" [ref=e579]
+              - gridcell "In Progress" [ref=e580]
+              - gridcell "APAC" [ref=e581]
+              - gridcell "Singapore" [ref=e582]
+              - gridcell "11 Vendor(s)" [ref=e583]
+              - gridcell "0 Vendor(s)" [ref=e584]
+              - gridcell "eyeopen download edit" [ref=e585]:
+                - generic [ref=e586]:
+                  - button "eyeopen" [ref=e587] [cursor=pointer]:
+                    - generic [ref=e589]: 
+                  - button "download" [ref=e590] [cursor=pointer]:
+                    - generic [ref=e592]: 
+                  - button "edit" [ref=e593] [cursor=pointer]:
+                    - generic [ref=e595]: 
+            - row "6595 shrinivas londhe 12/04/2025 03:16:53 12/09/2025 03:16:53 In Progress APAC Singapore 11 Vendor(s) 1 Vendor(s) eyeopen download description edit" [ref=e596]:
+              - gridcell "6595" [ref=e597]
+              - gridcell "shrinivas londhe" [ref=e598]
+              - gridcell "12/04/2025 03:16:53" [ref=e599]
+              - gridcell "12/09/2025 03:16:53" [ref=e600]
+              - gridcell "In Progress" [ref=e601]
+              - gridcell "APAC" [ref=e602]
+              - gridcell "Singapore" [ref=e603]
+              - gridcell "11 Vendor(s)" [ref=e604]
+              - gridcell "1 Vendor(s)" [ref=e605]
+              - gridcell "eyeopen download description edit" [ref=e606]:
+                - generic [ref=e607]:
+                  - button "eyeopen" [ref=e608] [cursor=pointer]:
+                    - generic [ref=e610]: 
+                  - button "download" [ref=e611] [cursor=pointer]:
+                    - generic [ref=e613]: 
+                  - button "description" [ref=e614] [cursor=pointer]:
+                    - generic [ref=e616]: 
+                  - button "edit" [ref=e617] [cursor=pointer]:
+                    - generic [ref=e619]: 
+            - row "6594 faker 12/04/2025 03:08:40 12/09/2025 03:08:40 In Progress LATAM Argentina 5 Vendor(s) 0 Vendor(s) eyeopen download edit" [ref=e620]:
+              - gridcell "6594" [ref=e621]
+              - gridcell "faker" [ref=e622]
+              - gridcell "12/04/2025 03:08:40" [ref=e623]
+              - gridcell "12/09/2025 03:08:40" [ref=e624]
+              - gridcell "In Progress" [ref=e625]
+              - gridcell "LATAM" [ref=e626]
+              - gridcell "Argentina" [ref=e627]
+              - gridcell "5 Vendor(s)" [ref=e628]
+              - gridcell "0 Vendor(s)" [ref=e629]
+              - gridcell "eyeopen download edit" [ref=e630]:
+                - generic [ref=e631]:
+                  - button "eyeopen" [ref=e632] [cursor=pointer]:
+                    - generic [ref=e634]: 
+                  - button "download" [ref=e635] [cursor=pointer]:
+                    - generic [ref=e637]: 
+                  - button "edit" [ref=e638] [cursor=pointer]:
+                    - generic [ref=e640]: 
+            - row "6593 shrinivas londhe 12/03/2025 23:42:30 12/08/2025 23:42:30 In Progress APAC Singapore 11 Vendor(s) 1 Vendor(s) eyeopen download description edit" [ref=e641]:
+              - gridcell "6593" [ref=e642]
+              - gridcell "shrinivas londhe" [ref=e643]
+              - gridcell "12/03/2025 23:42:30" [ref=e644]
+              - gridcell "12/08/2025 23:42:30" [ref=e645]
+              - gridcell "In Progress" [ref=e646]
+              - gridcell "APAC" [ref=e647]
+              - gridcell "Singapore" [ref=e648]
+              - gridcell "11 Vendor(s)" [ref=e649]
+              - gridcell "1 Vendor(s)" [ref=e650]
+              - gridcell "eyeopen download description edit" [ref=e651]:
+                - generic [ref=e652]:
+                  - button "eyeopen" [ref=e653] [cursor=pointer]:
+                    - generic [ref=e655]: 
+                  - button "download" [ref=e656] [cursor=pointer]:
+                    - generic [ref=e658]: 
+                  - button "description" [ref=e659] [cursor=pointer]:
+                    - generic [ref=e661]: 
+                  - button "edit" [ref=e662] [cursor=pointer]:
+                    - generic [ref=e664]: 
+            - row "6592 shrinivas londhe 12/03/2025 23:39:11 12/08/2025 23:39:11 In Progress APAC Singapore 11 Vendor(s) 1 Vendor(s) eyeopen download description edit" [ref=e665]:
+              - gridcell "6592" [ref=e666]
+              - gridcell "shrinivas londhe" [ref=e667]
+              - gridcell "12/03/2025 23:39:11" [ref=e668]
+              - gridcell "12/08/2025 23:39:11" [ref=e669]
+              - gridcell "In Progress" [ref=e670]
+              - gridcell "APAC" [ref=e671]
+              - gridcell "Singapore" [ref=e672]
+              - gridcell "11 Vendor(s)" [ref=e673]
+              - gridcell "1 Vendor(s)" [ref=e674]
+              - gridcell "eyeopen download description edit" [ref=e675]:
+                - generic [ref=e676]:
+                  - button "eyeopen" [ref=e677] [cursor=pointer]:
+                    - generic [ref=e679]: 
+                  - button "download" [ref=e680] [cursor=pointer]:
+                    - generic [ref=e682]: 
+                  - button "description" [ref=e683] [cursor=pointer]:
+                    - generic [ref=e685]: 
+                  - button "edit" [ref=e686] [cursor=pointer]:
+                    - generic [ref=e688]: 
+            - row "6591 shrinivas londhe 12/03/2025 23:36:33 12/08/2025 23:36:33 In Progress APAC Singapore 11 Vendor(s) 1 Vendor(s) eyeopen download description edit" [ref=e689]:
+              - gridcell "6591" [ref=e690]
+              - gridcell "shrinivas londhe" [ref=e691]
+              - gridcell "12/03/2025 23:36:33" [ref=e692]
+              - gridcell "12/08/2025 23:36:33" [ref=e693]
+              - gridcell "In Progress" [ref=e694]
+              - gridcell "APAC" [ref=e695]
+              - gridcell "Singapore" [ref=e696]
+              - gridcell "11 Vendor(s)" [ref=e697]
+              - gridcell "1 Vendor(s)" [ref=e698]
+              - gridcell "eyeopen download description edit" [ref=e699]:
+                - generic [ref=e700]:
+                  - button "eyeopen" [ref=e701] [cursor=pointer]:
+                    - generic [ref=e703]: 
+                  - button "download" [ref=e704] [cursor=pointer]:
+                    - generic [ref=e706]: 
+                  - button "description" [ref=e707] [cursor=pointer]:
+                    - generic [ref=e709]: 
+                  - button "edit" [ref=e710] [cursor=pointer]:
+                    - generic [ref=e712]: 
+            - row "6590 shrinivas londhe 12/03/2025 23:29:18 12/08/2025 23:29:18 In Progress APAC Singapore 11 Vendor(s) 1 Vendor(s) eyeopen download description edit" [ref=e713]:
+              - gridcell "6590" [ref=e714]
+              - gridcell "shrinivas londhe" [ref=e715]
+              - gridcell "12/03/2025 23:29:18" [ref=e716]
+              - gridcell "12/08/2025 23:29:18" [ref=e717]
+              - gridcell "In Progress" [ref=e718]
+              - gridcell "APAC" [ref=e719]
+              - gridcell "Singapore" [ref=e720]
+              - gridcell "11 Vendor(s)" [ref=e721]
+              - gridcell "1 Vendor(s)" [ref=e722]
+              - gridcell "eyeopen download description edit" [ref=e723]:
+                - generic [ref=e724]:
+                  - button "eyeopen" [ref=e725] [cursor=pointer]:
+                    - generic [ref=e727]: 
+                  - button "download" [ref=e728] [cursor=pointer]:
+                    - generic [ref=e730]: 
+                  - button "description" [ref=e731] [cursor=pointer]:
+                    - generic [ref=e733]: 
+                  - button "edit" [ref=e734] [cursor=pointer]:
+                    - generic [ref=e736]: 
+            - row "6589 shrinivas londhe 12/03/2025 23:27:23 12/08/2025 23:27:23 In Progress APAC Singapore 11 Vendor(s) 0 Vendor(s) eyeopen download edit" [ref=e737]:
+              - gridcell "6589" [ref=e738]
+              - gridcell "shrinivas londhe" [ref=e739]
+              - gridcell "12/03/2025 23:27:23" [ref=e740]
+              - gridcell "12/08/2025 23:27:23" [ref=e741]
+              - gridcell "In Progress" [ref=e742]
+              - gridcell "APAC" [ref=e743]
+              - gridcell "Singapore" [ref=e744]
+              - gridcell "11 Vendor(s)" [ref=e745]
+              - gridcell "0 Vendor(s)" [ref=e746]
+              - gridcell "eyeopen download edit" [ref=e747]:
+                - generic [ref=e748]:
+                  - button "eyeopen" [ref=e749] [cursor=pointer]:
+                    - generic [ref=e751]: 
+                  - button "download" [ref=e752] [cursor=pointer]:
+                    - generic [ref=e754]: 
+                  - button "edit" [ref=e755] [cursor=pointer]:
+                    - generic [ref=e757]: 
+            - row "6588 Test 12/03/2025 20:32:49 12/08/2025 20:32:49 In Progress EMEA United Kingdom 2 Vendor(s) 0 Vendor(s) eyeopen download edit" [ref=e758]:
+              - gridcell "6588" [ref=e759]
+              - gridcell "Test" [ref=e760]
+              - gridcell "12/03/2025 20:32:49" [ref=e761]
+              - gridcell "12/08/2025 20:32:49" [ref=e762]
+              - gridcell "In Progress" [ref=e763]
+              - gridcell "EMEA" [ref=e764]
+              - gridcell "United Kingdom" [ref=e765]
+              - gridcell "2 Vendor(s)" [ref=e766]
+              - gridcell "0 Vendor(s)" [ref=e767]
+              - gridcell "eyeopen download edit" [ref=e768]:
+                - generic [ref=e769]:
+                  - button "eyeopen" [ref=e770] [cursor=pointer]:
+                    - generic [ref=e772]: 
+                  - button "download" [ref=e773] [cursor=pointer]:
+                    - generic [ref=e775]: 
+                  - button "edit" [ref=e776] [cursor=pointer]:
+                    - generic [ref=e778]: 
+            - row "6586 Test 12/03/2025 20:17:26 12/08/2025 20:17:26 In Progress APAC India 8 Vendor(s) 0 Vendor(s) eyeopen download edit" [ref=e779]:
+              - gridcell "6586" [ref=e780]
+              - gridcell "Test" [ref=e781]
+              - gridcell "12/03/2025 20:17:26" [ref=e782]
+              - gridcell "12/08/2025 20:17:26" [ref=e783]
+              - gridcell "In Progress" [ref=e784]
+              - gridcell "APAC" [ref=e785]
+              - gridcell "India" [ref=e786]
+              - gridcell "8 Vendor(s)" [ref=e787]
+              - gridcell "0 Vendor(s)" [ref=e788]
+              - gridcell "eyeopen download edit" [ref=e789]:
+                - generic [ref=e790]:
+                  - button "eyeopen" [ref=e791] [cursor=pointer]:
+                    - generic [ref=e793]: 
+                  - button "download" [ref=e794] [cursor=pointer]:
+                    - generic [ref=e796]: 
+                  - button "edit" [ref=e797] [cursor=pointer]:
+                    - generic [ref=e799]: 
+          - navigation "Page navigation" [ref=e800]:
+            - generic [ref=e804] [cursor=pointer]:
+              - combobox "Page size" [ref=e806]: "10"
+              - button "Select" [ref=e808]:
+                - generic [ref=e810]: 
+            - generic [ref=e811]:
+              - generic [ref=e812]: Page 1 of 51 (501 items)
+              - generic [ref=e813]:
+                - button "Previous page" [ref=e814]: 
+                - generic [ref=e815]:
+                  - spinbutton "Page number" [ref=e819]: "1"
+                  - generic [ref=e820]: of
+                  - button "Page 51" [ref=e821] [cursor=pointer]: "51"
+                - button "Next page" [ref=e822] [cursor=pointer]: 
+```

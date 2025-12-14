@@ -1,0 +1,15 @@
+[PyxTech Lenovo] [INFO] [2025-12-05 00:43:50] Bid Id : 
+[PyxTech Lenovo] [INFO] [2025-12-05 00:43:50] URL: https://lenovo-stage-pyxquote.pyxtech.com/
+[PyxTech Lenovo] [INFO] [2025-12-05 00:43:50] Filling username
+[PyxTech Lenovo] [INFO] [2025-12-05 00:43:50] Filling password
+[PyxTech Lenovo] [INFO] [2025-12-05 00:43:50] Clicking on login button
+[PyxTech Lenovo] [INFO] [2025-12-05 00:43:50] Clicking on Create Bid button
+[PyxTech Lenovo] [INFO] [2025-12-05 00:43:50] Started Editing Inventory file
+[PyxTech Lenovo] [INFO] [2025-12-05 00:43:50] Completed Editing Inventory file
+[PyxTech Lenovo] [INFO] [2025-12-05 00:43:50] Clicking on Vendor dropdown
+[PyxTech Lenovo] [INFO] [2025-12-05 00:43:50] Clicking on Select All Vendors
+[PyxTech Lenovo] [INFO] [2025-12-05 00:43:50] Clicking on Select Business Unit
+[PyxTech Lenovo] [INFO] [2025-12-05 00:43:50] Clicking on Select IDG
+[PyxTech Lenovo] [INFO] [2025-12-05 00:43:50] Clicking on Submit Bid Request
+[PyxTech Lenovo] [INFO] [2025-12-05 00:43:50] Taking screenshot after submitting bid request
+[PyxTech Lenovo] [INFO] [2025-12-05 00:43:50] Bid ID:" 6332

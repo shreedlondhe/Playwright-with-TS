@@ -1,0 +1,46 @@
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] URL: https://lenovo-qa-pyxquote.pyxtech.com/
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Filling username
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Filling password
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on login button
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on Create Bid button
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Started Editing Inventory file
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Completed Editing Inventory file
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on Vendor dropdown
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on Select All Vendors
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on Select Business Unit
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on Select IDG
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on Submit Bid Request
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Taking screenshot after submitting bid request
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Bid ID:" 6718
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on OK button
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on SSD Logo to open user menu
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on Logout button
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Taking screenshot after logout
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Filling username
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Filling password
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on login button
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Bid Id : 6718
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on Bid 6718
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on Asset List section
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on Download button
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Downloaded file saved at: C:\Users\Admin\Downloads\VendorDownloads/6718_Bid_Form.xlsx
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Uploading file: C:\Users\Admin\Downloads\VendorDownloads\6718_Bid_Form.xlsx
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Uploading file
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on OK button
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on Submit Bid
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Extracted Message After clicking On submit is : "bid created successfully."
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on OK button
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on SSD Logo to open user menu
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on Logout button
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Taking screenshot after logout
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Filling username
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Filling password
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on login button
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Bid Id : 6718
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Selecting Bid
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on Bids section
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on Bids TechCert
+[PyxTech Lenovo] [INFO] [2025-12-05 01:23:57] Clicking on Bids Action Symbol
+inside get colour start
+Text color is:  rgb(220, 53, 69)
+inside get colour end

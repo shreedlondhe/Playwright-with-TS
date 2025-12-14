@@ -1,0 +1,12 @@
+[PyxTech Lenovo] [INFO] [2025-12-03 04:58:59] URL: https://lenovo-qa-pyxquote.pyxtech.com/
+[PyxTech Lenovo] [INFO] [2025-12-03 04:58:59] Filling username
+[PyxTech Lenovo] [INFO] [2025-12-03 04:58:59] Filling password
+[PyxTech Lenovo] [INFO] [2025-12-03 04:58:59] Clicking on login button
+[PyxTech Lenovo] [INFO] [2025-12-03 04:58:59] Clicking on Create Bid button
+inside inventory form edit section
+Done with inventory form edit
+[PyxTech Lenovo] [INFO] [2025-12-03 04:58:59] Clicking on Vendor dropdown
+[PyxTech Lenovo] [INFO] [2025-12-03 04:58:59] Clicking on Select All Vendors
+[PyxTech Lenovo] [INFO] [2025-12-03 04:58:59] Clicking on Select Business Unit
+[PyxTech Lenovo] [INFO] [2025-12-03 04:58:59] Clicking on Select IDG
+[PyxTech Lenovo] [INFO] [2025-12-03 04:58:59] Clicking on Submit Bid Request
