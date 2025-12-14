@@ -33,7 +33,6 @@ export default class SsdBidsSection_page {
       async getData() {
             await this.selectBid()
             this.grandTotalData = parseInt(await TestUtils.getText(this.grandTotal, 'Extracting Grand Value from SSD Bids section'));
-
             await TestUtils.click(this.bidsSection, "Clicking on Bids section")
             this.remarketingValueData = await this.convertCurrencyToNumber(await TestUtils.getText(this.remarketingValue, 'Extracting Remarketing Value from SSD Bids section'));
             this.logisticsFeesData = await this.convertCurrencyToNumber(await TestUtils.getText(this.logisticsFees, 'Extracting Lgistic fees Value from SSD Bids section'));
@@ -51,7 +50,7 @@ export default class SsdBidsSection_page {
 
       bidId: string = "";
       async selectBid() {
-            this.bidId = getBidId();
+            this.bidId = await getBidId();
             const bidToSelect = this.page.locator(`//td[text()='${this.bidId}']/..//td//div//div/i[@class='dx-icon dx-icon-eyeopen']`);
             log(`Bid Id : ${this.bidId}`);
             await TestUtils.click(bidToSelect, "Selecting Bid")

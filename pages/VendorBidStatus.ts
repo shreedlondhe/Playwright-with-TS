@@ -27,7 +27,7 @@ export default class VendorBidStatus {
 
     bidId: string = "";
     async selectBid() {
-        this.bidId = getBidId();
+        this.bidId = await getBidId();
         const bidToSelect = this.page.locator(`//td[text()='${this.bidId}']/..//td//div//div/i[@class='dx-icon dx-icon-eyeopen']`);
         log(`Bid Id : ${this.bidId}`);
         await TestUtils.click(bidToSelect, "Selecting Bid")
