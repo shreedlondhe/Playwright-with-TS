@@ -41,7 +41,7 @@ export default class VendorBidStatus {
     }
     async getStatus(status: string) {
         await TestUtils.click(this.dashboard, `Clicking on dashboard`);
-        const statusLocator = await this.page.locator(`//td[normalize-space()='${this.bidId}']/following-sibling::td[4]`);
+        const statusLocator = await this.page.locator(`//td[normalize-space()='${this.bidId}']/following-sibling::td[5]`);
         await TestUtils.expectToContainText(statusLocator, status, `Verifying status : ${status}`)
     }
 
